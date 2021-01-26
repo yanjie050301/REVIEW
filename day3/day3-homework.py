@@ -125,6 +125,7 @@ system()
 """
 
 # 作业：读取data文件中的数据，将所有的数字按照从小到大的顺序写入backup文件
+
 # 打开文件
 f = open("data.txt","+r")
 # 依次读取文件
@@ -139,13 +140,20 @@ for a in line:
 #使用sort函数进行排序，默认是升序，(reverse=True)为降序
 list1.sort()
 print(list1)
+name = "backup.txt"
+import os
+#获取当前路径
+path = os.getcwd()
+#拼接成一个完整的路径文件
+new_name = path +"\\" + name
+#打开新文件
+new_f = open(new_name,"w")
 # 遍历列表
-# 将列表中的数字写入backup文件中
+for num in list1:
+    num1 = str(num)
+    # 将列表中的数字写入backup文件中并自动换行
+    new_f.write(num1 + "\n")
 # 关闭两个文件
+f.close()
+new_f.close()
 
-# print(line[5])
-# list1 = []
-# for a in line:
-#     list1.append(a)
-# print(list1)
-# print(min(list1))
