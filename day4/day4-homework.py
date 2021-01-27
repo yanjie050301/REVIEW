@@ -57,15 +57,39 @@ xiaomei.namea()
 #    餐桌：占1.5平米
 # 3）.将以上三件家具添加到房子中
 # 4）.打印房子时，要求输出:户型，总面积，剩余面积，家具名称列表
+"""
+# 定义一个房子类，一个放家具的方法，
+class Home():
+    def __init__(self,area,huxing):
+        #房屋剩余面积
+        self.area = area
+        # 房屋总面积
+        self.zong = area
+        #家具列表
+        self.jiaju_list = []
+        #房屋户型
+        self.huxing = huxing
 
+    # def __str__(self):
+    #     return f"房子户型为{self.huxing}，总面积为{self.zong}，添加了{self.jiaju}家具，剩余面积为{self.area}，家具列表为{self.jiaju_list}"
 
+    def add_jiaju(self,jiaju,jiaju_area):
+        self.jiaju = jiaju
+        #判断家具的面积是否比房屋面积大
+        if jiaju_area>self.area:
+            print("家具过大")
+        else:
+            #剩余=房屋面积-家具面积
+            self.area = self.area-jiaju_area
+            #将家具添加到家具列表中
+            self.jiaju_list.append(jiaju)
+            print(f"房子户型为{self.huxing}，总面积为{self.zong}，添加了{self.jiaju}家具，剩余面积为{self.area}，家具列表为{self.jiaju_list}")
 
-
-
-
-
-
-
+home = Home(200,"别墅")
+home.add_jiaju("床",4)
+home.add_jiaju("衣柜",2)
+home.add_jiaju("餐桌",1.5)
+"""
 # 4.士兵开枪
 # 需求：
 # 1）.士兵瑞恩有一把AK47
