@@ -96,3 +96,71 @@ home.add_jiaju("餐桌",1.5)
 # 2）.士兵可以开火(士兵开火扣动的是扳机)
 # 3）.枪 能够 发射子弹(把子弹发射出去)
 # 4）.枪 能够 装填子弹 --增加子弹的数量
+
+# 定义一个士兵类，有开火和装子弹的方法
+"""
+class Shibing():
+    def __init__(self,ren_name,qiang_name):
+        #士兵的名字
+        self.ren_name = ren_name
+        #枪的名字
+        self.qiang_name = qiang_name
+        #枪的子弹
+        self.zongzidan = 5
+        #枪剩余子弹
+        self.shengzidan = 5
+    def kaihuo(self):
+        #士兵开一枪，子弹-1
+        self.shengzidan = self.shengzidan - 1
+        print(f"{self.ren_name}拿着{self.qiang_name}，当前子弹数量为{self.zongzidan}，开了一枪，子弹剩余{self.shengzidan}")
+    def zhuagzidan(self):
+        print(f"{self.ren_name}拿着{self.qiang_name}，当前子弹数量为{self.shengzidan}，",end="")
+        # 士兵装子弹，子弹+1
+        self.shengzidan = self.shengzidan + 1
+        print(f"装一下子弹，子弹剩余{self.shengzidan}")
+ruien = Shibing("ruien","AK47")
+ruien.kaihuo()
+ruien.zhuagzidan()
+"""
+class Shibing():
+    def __init__(self,ren_name):
+        #士兵的名字
+        self.ren_name = ren_name
+    def kaihuo(self):
+        #士兵开一枪，子弹-1
+        self.shengzidan = self.shengzidan - 1
+        print(f"{self.ren_name}拿着{self.qiang_name}，当前子弹数量为{self.zongzidan}，开了一枪，子弹剩余{self.shengzidan}")
+    def zhuagzidan(self):
+        print(f"{self.ren_name}拿着{self.qiang_name}，当前子弹数量为{self.shengzidan}，",end="")
+        # 士兵装子弹，子弹+1
+        self.shengzidan = self.shengzidan + 1
+        print(f"装一下子弹，子弹剩余{self.shengzidan}")
+
+class Qiang():
+    def __init__(self,qiang_name,num):
+        # 枪的名字
+        self.qiang_name = qiang_name
+        # 枪的子弹
+        self.zongzidan = num
+        # 枪剩余子弹
+        self.shengzidan = num
+ruien = Shibing("ruien","AK47")
+ruien.kaihuo()
+ruien.zhuagzidan()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
