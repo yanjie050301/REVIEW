@@ -1,18 +1,15 @@
 import requests
 import json
 
-"""
+
 # 1.请求地址
 urlstr = "https://wanandroid.com/user/login"
 # 2.发送请求
 datas = {"username":"yanjie000","password":"123123"}
-# 接口文档要求以json格式传参
-# 方法一：dumps转换
-datas = json.dumps(datas)
-# 方法二：
-r = requests.post(url= urlstr,data= datas)
+r = requests.post(url= urlstr,data = datas)
 # 3.输出响应数据
-# print(r.status_code)
+print(r.status_code)
+print(r.text)
 #响应结果为res_result
 res_result = r.json()
 # 响应结果中提取errorCode的值
@@ -22,7 +19,24 @@ username = res_result["data"]["username"]
 #响应断言
 if errorCode == 0 and username == datas.get("username"):
     print("登陆成功")
+
+
+############json传参练习
+# post请求，传参方式是以json格式传参
 """
+#方法一，先导入json模块，用dumps方法转化成json格式
+urlstr = 'http://httpbin.org/post'
+payload = {'qq群名':'selenium+jmeter+loadrunner','qq群号':'106014970'}
+#通过json.dumps方式将python字符串转化为json类型
+# payload = json.dumps(payload)
+# r = requests.post(url= urlstr,data = payload)
+# print(r.text)
+#方法二，使用json参数默认处理成json格式进行传递
+r = requests.post(url= urlstr,json = payload)
+print(r.text)
+# print(r.json())
+"""
+
 
 #session练习   .通过session函数自动携带上次请求返回的cookie信息，发送二次post请求
 """
