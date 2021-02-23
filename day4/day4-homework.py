@@ -122,6 +122,7 @@ ruien = Shibing("ruien","AK47")
 ruien.kaihuo()
 ruien.zhuagzidan()
 """
+"""
 class Shibing():
     def __init__(self,ren_name):
         #士兵的名字
@@ -147,14 +148,31 @@ class Qiang():
 ruien = Shibing("ruien","AK47")
 ruien.kaihuo()
 ruien.zhuagzidan()
+"""
 
+# 有这样一个文件，文件内容如下：
+# Lucy|18601914231|男|19890218
+# Jack|18101913132|女|19810311
+# Tom|18201912533|女|19830713
+# Lily|18301911734|男|19870210
+# 任务1-找出所有L开头的人名
+# 任务2-按照年龄进行排序
+# 任务3-找出所有女性用户的信息
 
-
-
-
-
-
-
+# 练习：
+# 目录下有这些文件：
+# A1.txt
+# B2.txt
+# C1.doc
+# D1.excel
+# 任务1-将该目录下的文件按照后缀进行分类，然后分别新建且放入不同的文件夹内，比如txt文件放入txt目录下等
+"""
+import os,shutil
+拿到当前目录下所有的文件， os.listdir(path)
+获取文件的后缀，分割   os.path.split(path)
+创建新的文件夹  os.mkdir()
+移动文件进入不同的文件  shutil.move()
+"""
 
 
 
