@@ -136,7 +136,7 @@
 # print(a,b)
 # 【【【【【【】】】】】】
 import functools
-list1 = [1,2,3,4,5]
+# list1 = [1,2,3,4,5]
 
 
 
@@ -172,16 +172,24 @@ list1 = [1,2,3,4,5]
 
 
 
-#⽂件和⽂件夹的操作
+#os操作  文件和文件夹的操作
 import os
-# os.rename("test.txt","text1.txt")
-# os.remove()
+#重命名文件
+# os.rename("data.txt","data1.txt")
+#删除文件
+# os.remove('data.text')
+#创建文件夹
 # os.mkdir("text")
+#删除空文件夹，若文件夹不为空，则报错
 # os.rmdir("text")
+#查看文件当前位置
 # a = os.getcwd()
 # print(a)
-# os.chdir("F:\\test\\selenium\\untitled\\day2")
+#改变默认位置
+# os.chdir("F:\\test\\selenium\\untitled\\REVIEW\\day2")
 # b = os.getcwd()
 # print(b)
+#查看路径下的所有文件
 list1 = os.listdir()
 print(list1)
+
