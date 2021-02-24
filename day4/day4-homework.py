@@ -191,31 +191,42 @@ for b in list1:          #遍历列表
 f.close()
 """
 ######### 任务2-按照年龄进行排序
+"""
 new_f= open("data.txt","+r",encoding="utf-8")
 list_age = []
+list_person = []
 while True:
     a = new_f.readline()     #将文件依次读出来，放入列表中
     if len(a) == 0:
         break
-    b = a.split("|")[3]      #分割字符串并获取出生日期
+    list_person.append(a)
+    b = a.split("|")[3]      #分割字符串并获取出生日期# 提取出出生年月，组成一个新的列表
     b = b.rstrip()           #删除出生日期右边的空字符
     list_age.append(b)       #将获取的日期添加到列表中
-print(list_age)
-
+list_age.sort()              #将列表中日前从小到大排序
+# print(list_age)
+# print(list_person)
+#拿日期去遍历用户信息，如果包含该日期，则打印
+for m in list_age:
+    for n in list_person:
+        if m in n:
+            print(n)
 new_f.close()
-
-# 提取出出生年月，组成一个新的列表
-# 遍历新的列表，按照大小重新排序
-# 根据排序的列表查找该用户的相关信息，并打印
-
+"""
 ######### 任务3-找出所有女性用户的信息
-
-
-
-
-
-
-
+"""
+new_f= open("data.txt","+r",encoding="utf-8")
+list_person = []
+while True:
+    a = new_f.readline()     #将文件依次读出来，放入列表中
+    if len(a) == 0:
+        break
+    list_person.append(a)
+for person in list_person:
+    if "女" in person:
+        print(person)
+new_f.close()
+"""
 # 练习：
 # 目录下有这些文件：
 # A1.txt
@@ -223,13 +234,42 @@ new_f.close()
 # C1.doc
 # D1.excel
 # 任务1-将该目录下的文件按照后缀进行分类，然后分别新建且放入不同的文件夹内，比如txt文件放入txt目录下等
-"""
+
 import os,shutil
-拿到当前目录下所有的文件， os.listdir(path)
-获取文件的后缀，分割   os.path.split(path)
-创建新的文件夹  os.mkdir()
-移动文件进入不同的文件  shutil.move()
 """
+# os.mkdir("file")
+path = os.getcwd()
+new_path = path + "\\"+"file"+"\\"
+with open(new_path + "A1.txt",mode="a") as fp:
+    fp.write("\n")
+with open(new_path + "B2.txt",mode="a") as fp:
+    fp.write("\n")
+with open(new_path + "C1.doc",mode="a") as fp:
+    fp.write("\n")
+with open(new_path + "D1.excel",mode="a") as fp:
+    fp.write("\n")
+"""
+# 拿到当前目录下所有的文件， os.listdir(path)
+path = os.getcwd()
+new_path = path + "\\"+"file"
+file = os.listdir(new_path)
+# 获取文件的后缀，分割   os.path.splitext(path)
+dir_tupe = set() #新建一个元祖，去重
+a = 0
+while a<len(file):
+    path1 = new_path + "\\"+file[a]   #组成完整的文件路径
+    f1,f2 = os.path.splitext(path1)      #分割路劲与后缀名
+    dir = f2.lstrip(".")               #去除左边的“.”
+    dir_tupe.add(dir)  #往元祖中添加元素
+    a = a+1
+# print(dir_list)
+for b in dir_tupe:
+    os.mkdir(new_path+"\\"+b)    #创建新的文件夹
+    for c in file:
+        if b in c:     #判断文件的后缀是否与文件夹名字一致
+            shutil.move(new_path + "\\" +c,new_path+"\\"+b)        #一致的话，将文件移动到该文件夹下面
+# 移动文件进入不同的文件  shutil.move()
+
 
 
 
