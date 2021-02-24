@@ -158,6 +158,63 @@ ruien.zhuagzidan()
 # 任务1-找出所有L开头的人名
 # 任务2-按照年龄进行排序
 # 任务3-找出所有女性用户的信息
+import os
+"""
+# 1.创建一个新的文件data.txt
+file = "data.txt"
+# 获取当前路径
+path =os.getcwd()
+print(path)
+# 拼接新路径
+new_path = path + "//" + file
+f = open(new_path,"w",encoding="utf-8")
+lis = ["Lucy|18601914231|男|19890218","Jack|18101913132|女|19810311","Tom|18201912533|女|19830713","Lily|18301911734|男|19870210"]
+# 2.将内容一次写入文件中
+for a in lis:
+    f.write(a)
+    f.write("\n")
+f.close()
+"""
+######### 任务1-找出所有L开头的人名
+"""
+new_f= open("data.txt","+r",encoding="utf-8")
+list1 = []
+while True:
+    a = new_f.readline()     #将文件依次读出来，放入列表中
+    if len(a) == 0:
+        break
+    list1.append(a)
+# print(list1)
+for b in list1:          #遍历列表
+    if b.startswith("L"):    #判断元素是否以F开头，是的话，打印
+        print(b)
+f.close()
+"""
+######### 任务2-按照年龄进行排序
+new_f= open("data.txt","+r",encoding="utf-8")
+list_age = []
+while True:
+    a = new_f.readline()     #将文件依次读出来，放入列表中
+    if len(a) == 0:
+        break
+    b = a.split("|")[3]      #分割字符串并获取出生日期
+    b = b.rstrip()           #删除出生日期右边的空字符
+    list_age.append(b)       #将获取的日期添加到列表中
+print(list_age)
+
+new_f.close()
+
+# 提取出出生年月，组成一个新的列表
+# 遍历新的列表，按照大小重新排序
+# 根据排序的列表查找该用户的相关信息，并打印
+
+######### 任务3-找出所有女性用户的信息
+
+
+
+
+
+
 
 # 练习：
 # 目录下有这些文件：
