@@ -9,14 +9,14 @@
 """
 import xlrd
 import os
-# current_dir = os.path.abspath(__file__)     #__file__表示当前文件，  abspath带文件后缀名的路径
-# print(current_dir)
+current_dir = os.path.abspath(__file__)     #__file__表示当前文件，  abspath带文件后缀名的路径
+print(current_dir)
 path = os.getcwd()    #获取当前路径
 base_dir = os.path.dirname(path)   #获取当前路径的上一层路径
 # print(base_dir)
 
 
-class TeadExcel():
+class ReadExcel():
     #属性
     def __init__(self):
         self.excel_dir = base_dir + "\\TestData" + "\\data.xls"    #组装excel路径
@@ -39,9 +39,10 @@ class TeadExcel():
             #循环使用字典推导式进行组装，将表头与数据进行一一对应
             dict_exc = {key_value[j]:value_value[j] for j in range(ncols)}
             datalist.append(dict_exc)
+        # print(datalist)
         return datalist
 if __name__ == '__main__':
-    rec = TeadExcel()
+    rec = ReadExcel()
     rec.resd_exc()
 """
 [{'id': '1', 'interfaceUrl': 'https://www.wanandroid.com/user/login', 'name': 'login', 'Method': 'post', 'value': "{'username':'zhuxiaodong','password':'test01'}", 'expect': '0', 'real': '', 'status': ''},
