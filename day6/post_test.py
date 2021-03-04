@@ -1,11 +1,13 @@
 import requests
 import json
 
-"""
+
 # 1.请求地址
 urlstr = "https://wanandroid.com/user/login"
 # 2.发送请求
-datas = {"username":"yanjie000","password":"123123"}
+# datas = {"username":"yanjie000","password":"123123"}
+datas = {'username':'zhuxiaodong','password':'test01'}
+print(type(datas))
 r = requests.post(url= urlstr,data = datas)
 # 3.输出响应数据
 print(r.status_code)
@@ -19,7 +21,7 @@ username = res_result["data"]["username"]
 #响应断言
 if errorCode == 0 and username == datas.get("username"):
     print("登陆成功")
-"""
+
 
 ############json传参练习
 # post请求，传参方式是以json格式传参

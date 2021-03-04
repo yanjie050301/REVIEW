@@ -9,8 +9,8 @@
 """
 import xlrd
 import os
-current_dir = os.path.abspath(__file__)     #__file__表示当前文件，  abspath带文件后缀名的路径
-print(current_dir)
+# current_dir = os.path.abspath(__file__)     #__file__表示当前文件，  abspath带文件后缀名的路径
+# print(current_dir)
 path = os.getcwd()    #获取当前路径
 base_dir = os.path.dirname(path)   #获取当前路径的上一层路径
 # print(base_dir)
@@ -24,7 +24,7 @@ class ReadExcel():
         self.exc = xlrd.open_workbook(self.excel_dir)
         #定位sheet页
         self.sheet = self.exc.sheet_by_name("testdata")
-    def resd_exc(self):
+    def read_exc(self):
         #读取测试数据
         #获取列表的行和列
         nrows = self.sheet.nrows
@@ -43,7 +43,7 @@ class ReadExcel():
         return datalist
 if __name__ == '__main__':
     rec = ReadExcel()
-    rec.resd_exc()
+    rec.read_exc()
 """
 [{'id': '1', 'interfaceUrl': 'https://www.wanandroid.com/user/login', 'name': 'login', 'Method': 'post', 'value': "{'username':'zhuxiaodong','password':'test01'}", 'expect': '0', 'real': '', 'status': ''},
  {'id': '2', 'interfaceUrl': 'https://www.wanandroid.com/user/register', 'name': 'register', 'Method': 'post', 'value': "{'username':'zxd01','password':'123456','repassword':'123456'}", 'expect': '0', 'real': '', 'status': ''}, 

@@ -12,8 +12,9 @@
     3、写入
     4、保存
 """
-import xlrd
+import xlrd,os
 import openpyxl
+"""
 ec = xlrd.open_workbook("data.xls")
 sheet = ec.sheet_by_index(0)   #通过索引获取sheet页，从0开始
 sheet1 = ec.sheet_by_name("testdata")    #t通过sheet的名称进行查找
@@ -27,9 +28,19 @@ row_value = sheet.row_values(0)    #获取第1行的数据，从0开始计数
 # print(row_value)
 col_value = sheet.col_values(0)   #获取第1列的数据，从0开始计数
 print(col_value)
+"""
 
-
-
-
-
+from xlutils.copy import copy   #该模块导入前，要先导入xlrd，需要依赖这个包
+path = os.getcwd()
+print(path)
+#1.打开excel
+f = xlrd.open_workbook(path + "\\data.xls")
+# 2.复制excel
+wb = copy(f)
+# 3.通过get_sheet()获取复制对象的sheet页
+wsheet = wb.get_sheet(0)
+# 4.对sheet页进行写入（传入x，y坐标和具体写入的值）
+wsheet.write(1,8,"aaa")
+# 5.保存excel（具体的excel路径+名称）
+wb.save(path + "\\data.xls")
 
