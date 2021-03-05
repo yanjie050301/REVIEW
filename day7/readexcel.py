@@ -34,13 +34,14 @@ from xlutils.copy import copy   #该模块导入前，要先导入xlrd，需要�
 path = os.getcwd()
 print(path)
 #1.打开excel
-f = xlrd.open_workbook(path + "\\data.xls")
+# f = xlrd.open_workbook(path + "\\data.xls")
+f = xlrd.open_workbook("data.xls")
 # 2.复制excel
 wb = copy(f)
 # 3.通过get_sheet()获取复制对象的sheet页
 wsheet = wb.get_sheet(0)
 # 4.对sheet页进行写入（传入x，y坐标和具体写入的值）
-wsheet.write(1,8,"aaa")
+wsheet.write(1,7,"abbbbbbbbbbaa")
 # 5.保存excel（具体的excel路径+名称）
-wb.save(path + "\\data.xls")
+wb.save("data.xls")
 

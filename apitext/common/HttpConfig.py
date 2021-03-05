@@ -24,10 +24,10 @@ class Httpconfig():
             return "请求方法错误"
     def get(self):   #二次封装的get方法和post方法
         r = requests.get(url=self.interfaceUrl,params=eval(self.values))        #eval()函数，将获取出来的str类型，转化为字典类型
-        return r.json()["errorCode"]
+        return r.json()["errorCode"],r.status_code
     def post(self):
         r = requests.post(url=self.interfaceUrl,data=eval(self.values))
-        return r.json()["errorCode"]
+        return r.json()["errorCode"],r.status_code
 if __name__ == '__main__':
     data = [{'id': '1', 'interfaceUrl': 'https://www.wanandroid.com/user/login', 'name': 'login', 'Method': 'post', 'value': "{'username':'zhuxiaodong','password':'test01'}", 'expect': '0', 'real': '', 'status': ''},
  {'id': '2', 'interfaceUrl': 'https://www.wanandroid.com/user/register', 'name': 'register', 'Method': 'post', 'value': "{'username':'zxd01','password':'123456','repassword':'123456'}", 'expect': '0', 'real': '', 'status': ''},
