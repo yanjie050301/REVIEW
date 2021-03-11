@@ -109,10 +109,12 @@ from common.readexcel import ReadExcel
 from common.HttpConfig import Httpconfig
 from ddt import ddt,data,unpack
 from common.writeexcel import WriteExcel
+from common.logconfig import log
 #初始化ReadExcel
 read_excel = ReadExcel()
 #从excel中获取测试数据，
 read_data = read_excel.read_exc()      #获取出来的是一个以字典为元素的列表
+logger = log()
 @ddt  #ddt框架要结合unittest框架进行使用，必须放在类的前面
 class TextCase(unittest.TestCase):
     #使用装饰器,作用：将该方法作为参数传给另一个方法
@@ -135,9 +137,9 @@ class TextCase(unittest.TestCase):
         try:
             self.assertEqual(real,expect,msg=f"实际结果为{real}，预期结果为{expect},测试执行失败")
         except Exception as msg:
-            print(msg)
+            logger.info(msg)
         finally:
-            print("用例执行完毕")
+            logger.info("用例执行完毕")
         id = int(value["id"])                   #获取excel表格中id的值，并把它转化为int类型
         #初始化WriteExcel
         we = WriteExcel(id,real,status)

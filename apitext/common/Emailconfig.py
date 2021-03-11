@@ -10,7 +10,7 @@ import time,os
 from email.header import Header
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-
+from logconfig import log
 from readconfig import ConfigRead
 
 
@@ -55,6 +55,7 @@ class SendEmail():
     def sendemail(self):
         # 3.发送邮件，内容包括正文和附件
         self.email()
+        logger = log()
         try:
             # 实例化SMTP类
             s = smtplib.SMTP()
@@ -65,9 +66,9 @@ class SendEmail():
             # 设置发件人，收件人和邮件内容
             s.sendmail(self.sender, self.receiver, self.msg.as_string())
         except:
-            print("邮件发送失败")
+            logger.info("邮件发送失败")
         else:
-            print("邮件发送成功")
+            logger.info("邮件发送成功")
         finally:
             # 退出服务器
             s.quit()
