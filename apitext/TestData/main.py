@@ -17,6 +17,12 @@ class Run():
         return  suite
     # 2.运行测试用例
     def runner(self):
+        #判断report文件夹里是否有之前的报告，有的话则删除，生成最新的
+        report_dir = os.path.dirname(os.path.dirname(__file__)) + "//Report"
+        report_list = os.listdir(report_dir)
+        for i in report_list:
+            if "report" in i:
+                os.remove(report_dir + "//" + i)
         suite = self.creatTestSutie()
         # 用HTMLTestRunner运行测试集合，并生成测试报告
         tf = time.strftime("%Y-%m-%d-%H-%M-%S", time.localtime())  # 获取当前时间，#####时分秒之间不能用冒号
@@ -32,7 +38,6 @@ class Run():
 if __name__ == '__main__':
     r = Run()
     r.runner()
-
 
 
 

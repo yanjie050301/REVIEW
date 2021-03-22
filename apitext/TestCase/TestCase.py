@@ -105,6 +105,7 @@ if __name__ == '__main__':
 *************************************************优化的代码***********请求接口的结果，将接口状态和errorcode码写入excel中
 """
 import unittest
+import pytest
 from common.readexcel import ReadExcel
 from common.HttpConfig import Httpconfig
 from ddt import ddt,data,unpack
@@ -134,14 +135,18 @@ class TextCase(unittest.TestCase):
         status = http_result[1]
         #添加断言
         expect = int(value["expect"])        #except取出来的是str类型，而real是int类型，要保持一致才可进行断言
+        """
+        $$$$$$$$$$$$$$    testcase中若使用try--except，即使用例失败，testcase也会判定为成功，因为断言没有报错
         try:
             self.assertEqual(real,expect,msg=f"实际结果为{real}，预期结果为{expect},测试执行失败")
         except Exception as msg:
             logger.info(msg)
         finally:
             logger.info("用例执行完毕")
+        """
+        self.assertEqual(real, expect, msg=f"实际结果为{real}，预期结果为{expect},测试执行失败")
         id = int(value["id"])                   #获取excel表格中id的值，并把它转化为int类型
-        #初始化WriteExcel
+        #初始化WriteExcelhi
         we = WriteExcel(id,real,status)
         #将请求结果的相关数据，写入表格中，errorCode和status_code的值，分别对应表格中的real和status字段
         we.save_e()
