@@ -149,6 +149,7 @@ print(list1)
 """
 ****************五、斐波那契数列  0 1 1 2 3 5 8 13 21 
 """
+"""
 list1 = [0,1]
 num = int(input("请输入数列个数："))
 def num_list(num):
@@ -157,3 +158,28 @@ def num_list(num):
         list1.append(b)
     print(list1)
 num_list(num)
+"""
+"""
+****************六、将一个列表的数据复制到另一个列表中。
+"""
+"""
+ll = [1,2,3,4,5,6,8,8]
+# 方法一:
+# kk = ll[:]
+# print(kk)
+# 方法二：
+hh = []
+hh.extend(ll)
+print(hh)
+"""
+"""
+****************七、输出 9*9 乘法口诀表。
+"""
+def excle():
+    for i in range(1,10):
+        print()
+        for n in range(1,i+1):
+            j = i*n
+            print(f"{i}*{n}={j}  ",end="")
+
+excle()
