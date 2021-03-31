@@ -123,6 +123,7 @@ if __name__ == '__main__':
 """
 ****************四、输入三个整数x,y,z，请把这三个数由小到大输出。
 """
+"""
 x,y,z = input("请输入x,y,z:").split(" ")
 x =int(x)
 y =int(y)
@@ -143,11 +144,16 @@ list1.append(z)
 #     a +=1
 list1.sort()   #reverse=True  从大到小排序
 print(list1)
+"""
 
-
-
-
-
-
-
-
+"""
+****************五、斐波那契数列  0 1 1 2 3 5 8 13 21 
+"""
+list1 = [0,1]
+num = int(input("请输入数列个数："))
+def num_list(num):
+    for a in range(0,num-2):
+        b = list1[len(list1)-1] + list1[len(list1)-2]
+        list1.append(b)
+    print(list1)
+num_list(num)
