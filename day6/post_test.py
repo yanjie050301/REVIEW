@@ -1,7 +1,7 @@
 import requests
 import json
 
-
+"""
 # 1.请求地址
 urlstr = "https://wanandroid.com/user/login"
 # 2.发送请求
@@ -21,7 +21,7 @@ username = res_result["data"]["username"]
 #响应断言
 if errorCode == 0 and username == datas.get("username"):
     print("登陆成功")
-
+"""
 
 ############json传参练习
 # post请求，传参方式是以json格式传参
@@ -41,7 +41,7 @@ print(r.text)
 
 
 #session练习   .通过session函数自动携带上次请求返回的cookie信息，发送二次post请求
-"""
+
 # 1.请求地址
 urlstr = "https://wanandroid.com/user/login"
 # 2.发送请求
@@ -53,7 +53,7 @@ r2 = se.get("https://wanandroid.com/1g/todo/list/0")
 # r2 = requests.get("https://wanandroid.com/1g/todo/list/0")
 # 3.输出响应数据
 print(r2.text)
-"""
+
 
 #练习查快递的接口
 #####################打开快递网：http://www.kuaidi.com/，搜索某个单号，判断它的状态是不是已签收

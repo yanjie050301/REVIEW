@@ -175,6 +175,7 @@ print(hh)
 """
 ****************七、输出 9*9 乘法口诀表。
 """
+"""
 def excle():
     for i in range(1,10):
         print()
@@ -183,3 +184,44 @@ def excle():
             print(f"{i}*{n}={j}  ",end="")
 
 excle()
+"""
+"""
+****************八、暂停一秒输出。
+"""
+"""
+import time
+li = [1,2,3,4,5,6]
+def sp():
+    for a in li:
+        print(a)
+        time.sleep(1)
+sp()
+"""
+"""
+****************九、暂停一秒输出，并格式化当前时间。
+"""
+import time
+def T():
+    tm = time.strftime("%Y:%m:%d:%H:%M:%S",time.localtime(time.time()))
+    print(tm)
+    time.sleep(2)
+    tm1 = time.strftime("%Y:%m:%d:%H:%M:%S", time.localtime(time.time()))
+    print(tm1)
+T()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
