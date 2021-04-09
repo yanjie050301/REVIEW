@@ -56,15 +56,35 @@ print(len(lii))
 1.把数字想办法分开，独立的数字
 2.判断是否是水仙花数
 """
-
+"""
 for a in range(100,1000):
     b = int(a / 100)
     c = int(a / 10 % 10)
     d = int(a % 10)
     if a == b**3 + c ** 3 +d**3:
         print(a)
-
-
+"""
+"""
+****************十四、将一个正整数分解质因数。
+例如：例如：输入90,打印出90=2*3*3*5。
+思想：
+能除开就打印，然后把商重新定义为输入的数，再从头循环除
+"""
+def zhi(num):
+    for n in range(2,num+1):
+        if num%n == 0:
+            print(f"{n}*",end="")
+            c = int(num / n)
+            if c == 1:
+                print("1")
+            zhi(c)
+            break
+num =int(input("请输入一个数："))
+if num == 1:
+    print("1既不是合数也不是质数")
+else:
+    print(f'{num} = ',end="")
+    zhi(num)
 
 
 
