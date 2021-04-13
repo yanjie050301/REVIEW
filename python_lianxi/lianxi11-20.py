@@ -70,6 +70,7 @@ for a in range(100,1000):
 思想：
 能除开就打印，然后把商重新定义为输入的数，再从头循环除
 """
+"""
 def zhi(num):
     for n in range(2,num+1):
         if num%n == 0:
@@ -85,6 +86,59 @@ if num == 1:
 else:
     print(f'{num} = ',end="")
     zhi(num)
-
-
+"""
+"""
+****************十四、数据库读数据，判断学习成绩>=90分的同学用A表示，60-89分之间的用B表示，60分以下的用C表示。
+思想：
+1.连接数据库，依次读取数据，
+2.判断数据符合条件，再次输出相应的结果
+"""
+import mysql.connector
+import pymysql
+"""
+#连接数据库
+db = pymysql.connect(host="localhost",user = "root",passwd="123456",db="yanjie")
+#获取游标
+cursor = db.cursor()
+# print(cursor)
+#执行数据库语句
+cursor.execute("select * from user;")
+#获取全部数据库数据
+# se = cursor.fetchall()
+#获取一条数据
+se1 = cursor.fetchone()
+print(se1)
+#关闭数据库
+db.close()
+"""
+class Datasql():
+    def __init__(self):
+        #连接数据库
+        self.db = pymysql.connect(host="localhost",user = "root",passwd="123456",db="yanjie")
+        #创建游标
+        self.cursor = self.db.cursor()
+        #操作sql语言
+        self.cursor.execute("select * from shisi;")
+    def chengji(self):
+        if course >=90:
+            print(f"该学生姓名为{name},成绩为{course}，等级为A")
+        elif 60<= course <=89:
+            print(f"该学生姓名为{name},成绩为{course}，等级为B")
+        elif course<60:
+            print(f"该学生姓名为{name},成绩为{course}，等级为C")
+    def readdb(self):
+        while True:
+            #依次读取数据
+            se = self.cursor.fetchone()
+            if se is None:
+                break
+            global name,course
+            name = se[1]
+            course = int(se[2])
+            self.chengji()
+            # print(type(se[2]))
+        self.db.close()
+if __name__ == '__main__':
+    a = Datasql()
+    a.readdb()
 
