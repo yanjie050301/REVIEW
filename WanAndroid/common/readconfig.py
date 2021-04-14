@@ -1,6 +1,7 @@
 import configparser
 import os
 """
+功能介绍：获取配置信息
 1、查找config.ini的路径
 2、传值option和section获取相关信息的信息
 
@@ -37,4 +38,4 @@ class Readconfig():
 
 if __name__ == '__main__':
     a = Readconfig("host")
-    a.readcon("uu")
+    print(a.readcon("ip"))

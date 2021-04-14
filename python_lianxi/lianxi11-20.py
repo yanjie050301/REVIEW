@@ -93,7 +93,6 @@ else:
 1.连接数据库，依次读取数据，
 2.判断数据符合条件，再次输出相应的结果
 """
-import mysql.connector
 import pymysql
 """
 #连接数据库
@@ -111,6 +110,7 @@ print(se1)
 #关闭数据库
 db.close()
 """
+"""
 class Datasql():
     def __init__(self):
         #连接数据库
@@ -120,25 +120,48 @@ class Datasql():
         #操作sql语言
         self.cursor.execute("select * from shisi;")
     def chengji(self):
-        if course >=90:
-            print(f"该学生姓名为{name},成绩为{course}，等级为A")
-        elif 60<= course <=89:
-            print(f"该学生姓名为{name},成绩为{course}，等级为B")
-        elif course<60:
-            print(f"该学生姓名为{name},成绩为{course}，等级为C")
+        if self.course >=90:
+            print(f"该学生姓名为{self.name},成绩为{self.course}，等级为A")
+        elif 60<= self.course <=89:
+            print(f"该学生姓名为{self.name},成绩为{self.course}，等级为B")
+        elif self.course<60:
+            print(f"该学生姓名为{self.name},成绩为{self.course}，等级为C")
     def readdb(self):
         while True:
             #依次读取数据
             se = self.cursor.fetchone()
             if se is None:
                 break
-            global name,course
-            name = se[1]
-            course = int(se[2])
+            #获取学生姓名
+            self.name = se[1]
+            # 获取学生成绩
+            self.course = int(se[2])
             self.chengji()
             # print(type(se[2]))
         self.db.close()
 if __name__ == '__main__':
     a = Datasql()
     a.readdb()
-
+"""
+"""
+****************十五、输入一行字符，分别统计出其中英文字母、空格、数字和其它字符的个数。
+思想：
+1.遍历这个字符串，然后直接判断就好了
+"""
+def strs():
+    a = input("请输入字符串：")
+    english = 0
+    none = 0
+    number = 0
+    other = 0
+    for b in a:
+        if b == " ":
+            none += 1
+        elif b.isdigit()== True:
+            number +=1
+        elif b.encode("utf-8").isalpha() == True:
+            english += 1
+        else:
+            other += 1
+    print(f"您输入的字符串为{a}，其中英文字母为{english}个，空格为{none}个，数字为{number}个，其他为{other}个")
+strs()

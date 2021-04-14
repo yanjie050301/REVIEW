@@ -20,7 +20,7 @@ class Wufachuli():
     def tijiao(self):
         url2 = "http://9.23.66.143:8759/api//openApi/common/manage/errorCrrectionForTag"
         d2 = {
-            "id": id,
+            "id": self.id,
             "errorTxt": "",
             "rightTxt": "",
             "signTxt": "无法处理"
@@ -69,8 +69,8 @@ class Wufachuli():
             try:
                 for i in range(0,30):
                     a = j["data"]["list"][i]   #获取每一单录音的数据
-                    global id
-                    id = a["id"]
+                    # global id
+                    self.id = a["id"]
                     zj_name = a["qualityCheckNape"]   #质检项名称
                     c = a["remark"]             #录音备注
                     z = a["qualityInspectionLabel"]   #质检标签
