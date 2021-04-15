@@ -148,6 +148,7 @@ if __name__ == '__main__':
 思想：
 1.遍历这个字符串，然后直接判断就好了
 """
+"""
 def strs():
     a = input("请输入字符串：")
     english = 0
@@ -165,3 +166,33 @@ def strs():
             other += 1
     print(f"您输入的字符串为{a}，其中英文字母为{english}个，空格为{none}个，数字为{number}个，其他为{other}个")
 strs()
+"""
+"""
+****************十六、求s=a+aa+aaa+aaaa+aa...a的值，其中a是一个数字。例如2+22+222+2222+22222(此时共有5个数相加)，几个数相加由键盘控制。
+思想：
+1.字符串拼接起来，转int类型
+2.然后再累加
+"""
+c = a =input("请输入累加的数字：")
+b = int(input("请输入累加的次数："))
+l = []
+l.append(a)
+def sum(a,c):
+    # if len(a)>1:
+    #     print("请输入数字0-9！！！")
+    if a.isalpha() == True:
+        print("不可输入字符，请输入数字0-9！！！")
+    elif a == " ":
+        print("不可为空，请输入数字0-9！！！")
+    elif a.isalnum() == True:
+        for i in range(2,b+1):
+            a = a + c
+            l.append(a)
+        d = 0
+        for n in l:
+            n = int(n)
+            d = d+n
+        print("最后累加的结果为：",d)
+    else:
+        print("不可特殊字符，请输入数字0-9！！！")
+sum(a,c)
