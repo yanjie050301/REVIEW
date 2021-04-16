@@ -173,6 +173,7 @@ strs()
 1.字符串拼接起来，转int类型
 2.然后再累加
 """
+"""
 c = a =input("请输入累加的数字：")
 b = int(input("请输入累加的次数："))
 l = []
@@ -190,9 +191,53 @@ def sum(a,c):
             l.append(a)
         d = 0
         for n in l:
-            n = int(n)
-            d = d+n
+            # n = int(n)
+            d = d+eval(n)
         print("最后累加的结果为：",d)
     else:
         print("不可特殊字符，请输入数字0-9！！！")
 sum(a,c)
+"""
+"""
+****************十七、一个数如果恰好等于它的因子之和，这个数就称为"完数"。例如6=1＋2＋3.编程找出1000以内的所有完数。
+思想：
+1.先判断该数的因数有哪些，不包含本身
+2.然后在判断累加是否等于本身
+"""
+"""
+keys = []
+values = []
+for a in range(2,1001):
+    li_yin = []
+    for b in range(1,a):
+        if a%b==0:
+            li_yin.append(b)
+    if len(li_yin)>=2:   #判断有两个以上的因数
+        keys.append(a)
+        values.append(li_yin)
+num = len(values)  #keys和values两个列表下标一一对应
+for f in range(0,num):
+    c = 0
+    for m in values[f]:
+        c = c+m
+    if keys[f] == c:
+        print("完数为：",keys[f])
+        print("其因数为：",values[f])
+
+"""
+
+keys = []
+values = []
+for a in range(2,1001):
+    li_yin = []
+    l = 0
+    for b in range(1,a):
+        if a%b==0:
+            li_yin.append(b)
+            l = l+b
+    if l == a:
+        print("完数为：",a)
+        print("其因数为：", li_yin)
+
+
+

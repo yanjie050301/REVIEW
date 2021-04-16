@@ -4,7 +4,7 @@ url = "https://www.wanandroid.com/user/login"
 data = {"username":"yanjie000","password":"123123"}
 r = requests.session()
 r1 = r.post(url=url,data=data)
-# print("登录接口",r1.json())
+print("登录接口",r1.json())
 
 
 # url1 = "https://www.wanandroid.com/lg/todo/add/json"
@@ -20,6 +20,6 @@ r1 = r.post(url=url,data=data)
 # r4 = r.post(url=url2)
 # print("删除清单",r4.text)
 
-url2 = "https://www.wanandroid.com/lg/todo/done/25705/json"
-r4 = r.post(url=url2)
-print("完成清单",r4.text)
+# url2 = "https://www.wanandroid.com/lg/todo/done/25705/json"
+# r4 = r.post(url=url2)
+# print("完成清单",r4.text)

@@ -19,9 +19,13 @@ class TestCase(unittest.TestCase):
     def test_case(self,value):
         url = value[2]
         month = value[3]
-        data1 = value[4]
+        data1 = eval(value[4])
         ht = Httpconfig(url,month,data1)
-        print("测试内容的开发和康师傅卡",ht.http())
+        re = ht.http()
+        errorCode = re["errorCode"]   #获取返回值的errorCode的值
+        expected_results = int(value[5])#获取测试用例中预期结果的值
+        #断言预期结果与实际结果是否一致
+        self.assertEqual(expected_results,errorCode,msg="用例失败")
     def tearDown(self):
         print("每条测试用例结束")
     @classmethod
