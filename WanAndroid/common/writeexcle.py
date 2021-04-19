@@ -4,18 +4,25 @@
 """
 import os,xlrd
 from xlutils.copy import copy
-
-
-path = os.path.dirname(os.path.dirname(__file__))
-new_path = path + "//data//" + "excle_login.xls"
-f = xlrd.open_workbook(new_path,"encoding = utf-8")
-f1 = copy(f)
-sheet = f1.get_sheet(0)
-sheet.write(1,6,8888)
-f1.save(new_path)
 class Writeexcle():
-    def __init__(self,actual_results,):
+    def __init__(self,rows,ncols,data):
+        self.rows = rows
+        self.ncols = ncols
+        self.data = data
+        path = os.path.dirname(os.path.dirname(__file__))
+        self.new_path = path + "//data//" + "excle_login.xls"
+    def writeexcle(self):
+        f = xlrd.open_workbook(self.new_path, "encoding = utf-8")
+        f1 = copy(f)
+        sheet = f1.get_sheet(0)
+        sheet.write(self.rows,self.ncols,self.data)
 
+        f1.save(self.new_path)
+    def rewrite(self):
+        self.writeexcle()
+if __name__ == '__main__':
+    a = Writeexcle(1,7,9999)
+    a.rewrite()
 
 
 

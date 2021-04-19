@@ -30,7 +30,7 @@ for a in range(1,rows):
 class Readexcle():
     def __init__(self):
         path = os.path.dirname(os.path.dirname(__file__))
-        new_path = path +"\\data\\" +"excle_login.xls"
+        new_path = path +"//data//" +"excle_login.xls"
         f = xlrd.open_workbook(new_path, "encoding=utf-8")
         self.se = f.sheet_by_name("登录接口")
         self.rows = self.se.nrows

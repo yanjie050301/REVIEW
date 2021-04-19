@@ -1,4 +1,68 @@
+import unittest
+
+from ddt import ddt,data
+
+from  python_lianxi.register import register
+
+@ddt
+class RegisterTestCase(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        print("测试开始")
+
+    def setUp(self):
+        print("每条测试用例开始")
+    cases=[
+        {"title": "注册成功",  'expected': {"code": 1, "msg": "注册成功"},'data':{"limiyou","123456",'123456'}},
+        {"title": "密码不一致", 'expected': {"code": 0, "msg": "两次密码不一致"}, 'data': {"miyoua", "12345", '123456'}},
+        {"title": "账户已存在", 'expected': {"code": 0, "msg": "该账户已存在"}, 'data': {"lemontree", "123456", '123456'}},
+    ]
+    @data(*cases)
+    def test_register(self,case):
+        try:
+            a = register(*case['data'])
+            self.assertEqual(case['expected'],a.re(),msg="用例失败")
+        except Exception as msg:
+            print(msg)
+        else:
+            print("ceshichengg ")
+    def tearDown(self):
+        print("每条测试用例结束")
+    @classmethod
+    def tearDownClass(cls):
+        print("测试结束")
+if __name__ == "__main__":
+    unittest.main()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 """
+
 # 1、一行代码实现1--100之和
 # 利用sum()函数求和
 print(sum(i for i in range(1,101)))
@@ -28,15 +92,15 @@ datetime:处理日期时间
 
 
 # 4、字典如何删除键和合并两个字典
-d = {"a":1,"b":2}
-b = {"c":3}
+# d = {"a":1,"b":2}
+# b = {"c":3}
 # 删除字典元素
 # del d["a"]
 # 删除字典
 # del b
 #合并两个字典
-b.update(d)
-print(b)
+# b.update(d)
+# print(b)
 
 """
 5、谈下python的GIL

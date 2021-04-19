@@ -225,7 +225,7 @@ for f in range(0,num):
         print("其因数为：",values[f])
 
 """
-
+"""
 keys = []
 values = []
 for a in range(2,1001):
@@ -238,6 +238,14 @@ for a in range(2,1001):
     if l == a:
         print("完数为：",a)
         print("其因数为：", li_yin)
-
-
-
+"""
+"""
+****************十八、一球从100米高度自由落下，每次落地后反跳回原高度的一半；再落下，求它在第10次落地时，共经过多少米？第10次反弹多高？
+思想：无
+"""
+zong = a = 100
+for i in range(1,11):
+    b = a/2
+    zong = zong+b*2
+    a = a-b
+    print(f"第{i}下，当前反弹高度为{a}米,共经过{zong}米")

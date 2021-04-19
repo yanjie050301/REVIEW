@@ -17,7 +17,7 @@ class Httpconfig():
         return re.json()
     def post(self):
         re = requests.post(url= self.url,data = self.data)
-        return re.json()
+        return re.json(),re.status_code
     def http(self):
         if self.method == "post":
             return self.post()
@@ -31,8 +31,5 @@ if __name__ == '__main__':
     url1 = "https://www.wanandroid.com/lg/todo/list/1"
     url2 = "https://www.wanandroid.com/user/logout/json"
     a = Httpconfig(url=url,method="post",data=data)
-    # a.http()
     b = a.http()
     print(b)
-    # r = requests.post(url=url,data=data)
-    # print(r.json())
