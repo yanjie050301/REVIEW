@@ -28,11 +28,11 @@ for a in range(1,rows):
     print(c)
 """
 class Readexcle():
-    def __init__(self):
+    def __init__(self,sheetname):
         path = os.path.dirname(os.path.dirname(__file__))
         new_path = path +"//data//" +"excle_login.xls"
         f = xlrd.open_workbook(new_path, "encoding=utf-8")
-        self.se = f.sheet_by_name("登录接口")
+        self.se = f.sheet_by_name(sheetname)
         self.rows = self.se.nrows
         self.datalist = []
     def getdata(self):
@@ -41,5 +41,5 @@ class Readexcle():
             self.datalist.append(data)
         return self.datalist
 if __name__ == '__main__':
-    a = Readexcle()
+    a = Readexcle("登录接口")
     print(a.getdata())

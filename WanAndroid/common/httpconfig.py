@@ -9,12 +9,13 @@ class Httpconfig():
         self.data = data
         self.method = method
         # self.coo = coo
-    def login(self):
-        re = requests.post(url=self.url, data=self.data)
-        return re.cookies
+    def cook(self):
+        r = requests.session()
+        login = r.post(url=self.url, data=self.data)
+
     def get(self):
         re = requests.get(url= self.url,params = self.data)
-        return re.json()
+        return re.json(),re.status_code
     def post(self):
         re = requests.post(url= self.url,data = self.data)
         return re.json(),re.status_code

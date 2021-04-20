@@ -13,14 +13,15 @@ class RegisterTestCase(unittest.TestCase):
     def setUp(self):
         print("每条测试用例开始")
     cases=[
-        {"title": "注册成功",  'expected': {"code": 1, "msg": "注册成功"},'data':{"limiyou","123456",'123456'}},
-        {"title": "密码不一致", 'expected': {"code": 0, "msg": "两次密码不一致"}, 'data': {"miyoua", "12345", '123456'}},
-        {"title": "账户已存在", 'expected': {"code": 0, "msg": "该账户已存在"}, 'data': {"lemontree", "123456", '123456'}},
+        {"title": "注册成功",  'expected': {"code": 1, "msg": "注册成功"},'data':["limiyou","123456",'123456']},
+        {"title": "密码不一致", 'expected': {"code": 0, "msg": "两次密码不一致"}, 'data': ("miyoua", "12345", '123456')},
+        {"title": "账户已存在", 'expected': {"code": 0, "msg": "该账户已存在"}, 'data': ("lemontree", "123456", '123456')},
     ]
     @data(*cases)
     def test_register(self,case):
         try:
             a = register(*case['data'])
+            # print(a)
             self.assertEqual(case['expected'],a.re(),msg="用例失败")
         except Exception as msg:
             print(msg)
@@ -37,15 +38,9 @@ if __name__ == "__main__":
 
 
 
-
-
-
-
-
-
-
-
-
+# cases = {"title": "注册成功",  'expected': {"code": 1, "msg": "注册成功"},'data':("limiyou","123456",'123456')}
+# a =cases["data"]
+# print(a)
 
 
 

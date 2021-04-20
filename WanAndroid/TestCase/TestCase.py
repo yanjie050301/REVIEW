@@ -7,11 +7,11 @@ from ddt import ddt,data
 from WanAndroid.common.readexcle import Readexcle
 from WanAndroid.common.httpconfig import Httpconfig
 from WanAndroid.common.writeexcle import Writeexcle
-excle = Readexcle()
+excle = Readexcle("登录接口")
 excle_data = excle.getdata()   #一个大列表嵌套测试数据的小列表
 
 @ddt
-class TestCase(unittest.TestCase):
+class Wanandroid(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         print("测试开始")
@@ -19,10 +19,11 @@ class TestCase(unittest.TestCase):
         print("每条测试用例开始")
     @data(*excle_data)
     def test_login(self,value):
+        """ 说好的惊喜呢"""
         url = value[3]
         month = value[4]
-        data1 = eval(value[5])
-        ht = Httpconfig(url,month,data1)
+        params = eval(value[5])
+        ht = Httpconfig(url,month,params)
         re = ht.http()
         errorCode = re[0]["errorCode"]   #获取返回值的errorCode的值，实际结果
         status_code = re[1]        #获取响应状态码
@@ -52,10 +53,12 @@ class TestCase(unittest.TestCase):
             print("执行完毕")
         # 断言预期结果与实际结果是否一致
         self.assertEqual(expected_results, errorCode, msg="用例失败")
+    def test_add(self):
+        pass
     def tearDown(self):
         print("每条测试用例结束")
     @classmethod
     def tearDownClass(cls):
         print("测试结束")
-# if __name__ == '__main__':
-unittest.main
+if __name__ == '__main__':
+    unittest.main()

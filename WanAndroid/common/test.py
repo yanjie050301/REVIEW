@@ -1,16 +1,25 @@
-import requests,json
+import requests,json,time
 
 url = "https://www.wanandroid.com/user/login"
 data = {"username":"yanjie000","password":"123123"}
-r = requests.session()
-r1 = r.post(url=url,data=data)
-print("登录接口",r1.json())
-
-
-# url1 = "https://www.wanandroid.com/lg/todo/add/json"
-# data1 = {"title":"dd","content":"ddddd","date":"","type":8}
-# r2 = r.post(url=url1,data=data1)
-# # print("添加清单接口",r2.text)
+# r = requests.session()
+r1 = requests.post(url=url,data=data)
+# print("登录接口",r1.json())
+# coo = r1.cookies["JSESSIONID"]
+coo = r1.cookies
+# print(coo)
+# cook ={
+#     "cookie" : coo
+# }
+# header = {
+#     "cookie":"JSESSIONID="+coo
+# }
+# time.sleep(5)
+url1 = "https://www.wanandroid.com/lg/todo/add/json"
+data1 = {"title":"ceshi0000","content":"ddddd","date":"2021-03-31","type":0}
+# r2 = requests.post(url=url1,data=data1,headers=header)
+r2 = requests.post(url=url1,data=data1,cookies=coo)
+print("添加清单接口",r2.text)
 #
 # url1 = "https://www.wanandroid.com/lg/todo/list/1"
 # r3 = r.get(url=url1)
