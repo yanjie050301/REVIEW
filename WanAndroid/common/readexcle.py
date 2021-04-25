@@ -42,4 +42,4 @@ class Readexcle():
         return self.datalist
 if __name__ == '__main__':
     a = Readexcle("添加待办清单")
-    print(a.getdata())
+    print(len(a.getdata()))

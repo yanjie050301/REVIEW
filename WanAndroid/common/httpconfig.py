@@ -32,10 +32,10 @@ if __name__ == '__main__':
     url2 = "https://www.wanandroid.com/lg/todo/add/json"
     data2 = {"title":"ceshi0000","content":"ddddd","date":"2021-03-31","type":0}
     method = "post"
-    a = Httpconfig(url,method,data)
-    # a = Httpconfig()
-    # b = a.login()
+    # a = Httpconfig(url,method,data)
+    a = Httpconfig()
+    b = a.login()
     # print("555555555",b)
-    # c = Httpconfig(url=url2,method="post",data=data2,cookies=b)
-    d = a.http()
+    c = Httpconfig(url=url2,method=method,data=data2,cookies=b)
+    d = c.http()
     print(d)

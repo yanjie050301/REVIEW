@@ -6,21 +6,18 @@ ddt框架的练习
 """
 from ddt import ddt,data,unpack
 import unittest
-# @ddt          #ddt框架要结合unittest框架进行使用，必须放在类的前面
-# class Test(unittest.TestCase):
-#
-#
-#     @data((2,3),(3,4))
-#     # @unpack
-#     def testa(self,r):
-#         print(r)
-#         # self.assertEqual(value,value-1)
-# if __name__ == '__main__':
-#     unittest.main()
+@ddt          #ddt框架要结合unittest框架进行使用，必须放在类的前面
+class Test(unittest.TestCase):
 
-a = (0,200)
-print(type(a))
-print(a[0])
+
+    @data((2,3),(3,4))
+    # @unpack
+    def testa(self,r):
+        print(r)
+        # self.assertEqual(value,value-1)
+if __name__ == '__main__':
+    unittest.main()
+
 
 
 
