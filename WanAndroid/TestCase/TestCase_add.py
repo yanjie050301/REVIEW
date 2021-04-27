@@ -35,8 +35,12 @@ class TestCase(unittest.TestCase):
         eyuqi = values[6]  # 获取预期结果
         cyuqi = values[6].encode("utf-8")  # 获取预期结果.中文需要编码
         status_code = re[1]    #获取服务器返回的状态码
-        errorMsg = re[0]["errorMsg"]#获取服务器返回的错误信息
-        errorMsg1 = re[0]["errorMsg"].encode("utf-8")   #获取服务器返回的错误信息.中文需要编码
+        # eval无法解析null， true， false之类的数据
+        global false, null, true
+        false = null = true = ''
+        re_json = eval(re[0])  # 获取服务器返回的数据，类型为dict
+        errorMsg = re_json.get("errorMsg")#获取服务器返回的错误信息
+        errorMsg1 = re_json.get("errorMsg").encode("utf-8")   #获取服务器返回的错误信息.中文需要编码
         id = int(values[0])  #获取测试用例的id
         wr = Writeexcle(1)
         if errorMsg !="":
@@ -48,7 +52,8 @@ class TestCase(unittest.TestCase):
                 wr.rewrite(id,9,"fail")
             self.assertEqual(cyuqi,errorMsg1,msg="用例失败")
         else:
-            title = re[0]["data"]["title"]  # 获取实际结果
+            title = re_json.get("data").get("title")  # 获取实际结果
+            print("555555555555",type(title))
             wr.rewrite(id,7, title)
             wr.rewrite(id,8, status_code)
             if title == eyuqi:

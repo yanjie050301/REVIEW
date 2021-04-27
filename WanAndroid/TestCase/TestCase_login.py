@@ -3,7 +3,7 @@
 1.登录接口
 2.使用unittest框架，执行测试用例
 """
-import unittest
+import unittest,json
 from ddt import ddt,data
 from WanAndroid.common.readexcle import Readexcle
 from WanAndroid.common.httpconfig import Httpconfig
@@ -24,7 +24,11 @@ class Wanandroid(unittest.TestCase):
         params = eval(value[5])
         ht = Httpconfig(url,method,params)
         re = ht.http()
-        errorCode = re[0]["errorCode"]   #获取返回值的errorCode的值，实际结果
+        #eval无法解析null， true， false之类的数据
+        global false, null, true
+        false = null = true = ''
+        re_json = eval(re[0]) #获取服务器返回的数据，类型为dict
+        errorCode = re_json.get("errorCode")  #获取返回值的errorCode的值，实际结果
         status_code = re[1]        #获取响应状态码
         expected_results = int(value[6])#获取测试用例中预期结果的值
 

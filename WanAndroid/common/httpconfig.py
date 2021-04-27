@@ -14,10 +14,10 @@ class Httpconfig():
         return lo.cookies
     def get(self):
         re = requests.get(url= self.url,params = self.data,cookies= self.cookies)
-        return re.json(),re.status_code
+        return re.text,re.status_code
     def post(self):
         re = requests.post(url= self.url,data = self.data,cookies= self.cookies)
-        return re.json(),re.status_code
+        return re.text,re.status_code
     def http(self):
         if self.method == "post":
             return self.post()
@@ -31,11 +31,21 @@ if __name__ == '__main__':
     url1 = "https://www.wanandroid.com/lg/todo/list/1"
     url2 = "https://www.wanandroid.com/lg/todo/add/json"
     data2 = {"title":"ceshi0000","content":"ddddd","date":"2021-03-31","type":0}
+    url3 = "https://www.wanandroid.com/lg/todo/list/0"
     method = "post"
+    method1 = "get"
     # a = Httpconfig(url,method,data)
     a = Httpconfig()
-    b = a.login()
-    # print("555555555",b)
-    c = Httpconfig(url=url2,method=method,data=data2,cookies=b)
-    d = c.http()
-    print(d)
+    r1 = a.login()
+    # b = Httpconfig(url2,method,data2,cookies=r1)
+    c = Httpconfig(url3,method1,cookies=r1)
+    rr = c.http()
+    print(rr)
+    # global false, null, true
+    # false = null = true = ''
+    # rrr = eval(rr[0])
+    # print(rrr.get("data").get("title"))
+    # print(type(rrr))
+    # re = json.dumps(rrr)
+    # print(type(re))
+    # print(re["errorCode"])
