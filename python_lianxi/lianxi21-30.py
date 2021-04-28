@@ -27,3 +27,50 @@ for i in range(1,21):
     sum = sum + cheng
 print(sum)
 """
+"""
+****************二十三、利用递归方法求5!。
+思想：
+1.递归自己调用自己
+2.要有if-else判断，有个终止的条件
+3.结果只能return，不能print
+"""
+
+def cheng(num):
+    sum = 0
+    if num ==0:
+        sum = 1
+    else:
+        sum = num * cheng(num-1)
+    return sum
+print(cheng(5))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

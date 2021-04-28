@@ -2,7 +2,7 @@
 功能介绍：再次封装request方法，实现传出什么参数，就调用哪个方法
 
 """
-import requests,json
+import requests,json,re
 class Httpconfig():
     def __init__(self,url= None,method= None,data = None,cookies= None):
         self.url = url
@@ -31,7 +31,7 @@ if __name__ == '__main__':
     url1 = "https://www.wanandroid.com/lg/todo/list/1"
     url2 = "https://www.wanandroid.com/lg/todo/add/json"
     data2 = {"title":"ceshi0000","content":"ddddd","date":"2021-03-31","type":0}
-    url3 = "https://www.wanandroid.com/lg/todo/list/0"
+    url3 = "https://www.wanandroid.com/lg/todo/list/1"
     method = "post"
     method1 = "get"
     # a = Httpconfig(url,method,data)
@@ -40,7 +40,11 @@ if __name__ == '__main__':
     # b = Httpconfig(url2,method,data2,cookies=r1)
     c = Httpconfig(url3,method1,cookies=r1)
     rr = c.http()
-    print(rr)
+    print(type(rr))
+    rr = str(rr)
+    cehs = "ceshi1111"
+    match = re.search(r'cehs',rr)
+    print(match.group())
     # global false, null, true
     # false = null = true = ''
     # rrr = eval(rr[0])

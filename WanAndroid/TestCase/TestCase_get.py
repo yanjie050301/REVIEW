@@ -21,7 +21,11 @@ class TestCase(unittest.TestCase):
     def test_get(self,values):
         url = values[3]
         monthd = values[4]
-        ht = Httpconfig
+        if excle_data[10] != " ":    #判断是否需要前置条件，cookie
+            ht = Httpconfig()
+            coo = ht.login()
+            ht = Httpconfig(url=url,method=monthd,cookies=coo)
+            re = ht.http()
 
 
     def tearDown(self):
