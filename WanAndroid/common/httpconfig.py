@@ -43,7 +43,8 @@ if __name__ == '__main__':
     print(type(rr))
     rr = str(rr)
     cehs = "ceshi1111"
-    match = re.search(r'cehs',rr)
+    com = re.compile(r""+cehs+"")
+    match = com.search(rr)
     print(match.group())
     # global false, null, true
     # false = null = true = ''

@@ -32,9 +32,9 @@ print(sum)
 思想：
 1.递归自己调用自己
 2.要有if-else判断，有个终止的条件
-3.结果只能return，不能print
+3.累计的时候结果只能return，不能print
 """
-
+"""
 def cheng(num):
     sum = 0
     if num ==0:
@@ -43,10 +43,23 @@ def cheng(num):
         sum = num * cheng(num-1)
     return sum
 print(cheng(5))
-
-
-
-
+"""
+"""
+****************二十三、利用递归函数调用方式，将所输入的5个字符，以相反顺序打印出来。
+思想：
+1.递归自己调用自己
+2.要有if-else判断，有个终止的条件
+3.调用自己的话要有个递减的条件
+"""
+def out(s,l):
+    if l==0:
+        return
+    else:
+        print(s[l-1])
+        out(s, l-1)
+s = "asdfg"
+l = len(s)
+out(s,l)
 
 
 
