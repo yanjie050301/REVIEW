@@ -43,6 +43,9 @@ class TestCase(unittest.TestCase):
         errorMsg1 = re_json.get("errorMsg").encode("utf-8")   #获取服务器返回的错误信息.中文需要编码
         id = int(values[0])  #获取测试用例的id
         wr = Writeexcle(1)
+        wr_get = Writeexcle(2)    #将服务器返回数据的title值写去获取列表中的预期结果位置
+        wr_complete = Writeexcle(3)  #将服务器返回数据的清单id值写去完成清单列表中的uid位置
+        wr_delete = Writeexcle(4)    #将服务器返回数据的清单id值写去删除清单列表中的uid位置
         if errorMsg !="":
             wr.rewrite(id, 7, eyuqi)
             wr.rewrite(id, 8, status_code)
@@ -53,7 +56,9 @@ class TestCase(unittest.TestCase):
             self.assertEqual(cyuqi,errorMsg1,msg="用例失败")
         else:
             title = re_json.get("data").get("title")  # 获取实际结果
+            qingdan_id = re_json.get("data").get("id")
             print("555555555555",type(title))
+
             wr.rewrite(id,7, title)
             wr.rewrite(id,8, status_code)
             if title == eyuqi:
@@ -61,6 +66,10 @@ class TestCase(unittest.TestCase):
             else:
                 wr.rewrite(id,9,"fail")
             self.assertEqual(eyuqi, title, msg="用例失败")
+            if id in range(1,5):
+                wr_get.rewrite(id, 6, title)  # 将服务器返回数据的title值写去获取列表中的预期结果位置,只写前4条数据的值
+                wr_complete.rewrite(id,3,qingdan_id)      #将服务器返回数据的清单id值写去完成清单列表中的uid位置
+                wr_delete.rewrite(id, 3, qingdan_id)     #将服务器返回数据的清单id值写去删除清单列表中的uid位置
 
     def tearDown(self):
         print("用例环境结束")

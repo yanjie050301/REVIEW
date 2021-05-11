@@ -32,25 +32,16 @@ if __name__ == '__main__':
     url2 = "https://www.wanandroid.com/lg/todo/add/json"
     data2 = {"title":"ceshi0000","content":"ddddd","date":"2021-03-31","type":0}
     url3 = "https://www.wanandroid.com/lg/todo/list/1"
+    q = "https://www.wanandroid.com/lg/todo/done/"
+    p ="https://www.wanandroid.com/lg/todo/delete/"
+    id = "26213"
+    url4 = p+id+"/json"
     method = "post"
     method1 = "get"
     # a = Httpconfig(url,method,data)
     a = Httpconfig()
     r1 = a.login()
     # b = Httpconfig(url2,method,data2,cookies=r1)
-    c = Httpconfig(url3,method1,cookies=r1)
+    c = Httpconfig(url4,method,cookies=r1)
     rr = c.http()
-    print(type(rr))
-    rr = str(rr)
-    cehs = "ceshi1111"
-    com = re.compile(r""+cehs+"")
-    match = com.search(rr)
-    print(match.group())
-    # global false, null, true
-    # false = null = true = ''
-    # rrr = eval(rr[0])
-    # print(rrr.get("data").get("title"))
-    # print(type(rrr))
-    # re = json.dumps(rrr)
-    # print(type(re))
-    # print(re["errorCode"])
+    print(rr)

@@ -2,12 +2,12 @@ import requests,json,time
 import chardet
 url = "https://www.wanandroid.com/user/login"
 data = {"username":"yanjie000","password":"123123"}
-# r = requests.session()
-# r1 = r.post(url=url,data=data)
-r = requests.post(url=url,data=data)
+r = requests.session()
+r1 = r.post(url=url,data=data)
+# r = requests.post(url=url,data=data)
 # print("登录接口",r1.json())
 # coo = r1.cookies["JSESSIONID"]
-coo = r.cookies
+# coo = r.cookies
 # print(coo)
 # cook ={
 #     "cookie" : coo
@@ -31,14 +31,19 @@ coo = r.cookies
 #
 # string_code = chardet.detect(errorMsg)
 # print(string_code)
-url1 = "https://www.wanandroid.com/lg/todo/list/1"
-r3 = requests.get(url=url1,cookies = coo)
-print("获取清单列表",r3.text)
+# url1 = "https://www.wanandroid.com/lg/todo/list/1"
+# r3 = requests.get(url=url1,cookies = coo)
+# print("获取清单列表",r3.text)
 
 # url2 = "https://www.wanandroid.com/lg/todo/delete/25701/json"
 # r4 = r.post(url=url2)
 # print("删除清单",r4.text)
 
-# url2 = "https://www.wanandroid.com/lg/todo/done/25705/json"
+# url2 = "https://www.wanandroid.com/lg/todo/done/26215/json"
 # r4 = r.post(url=url2)
 # print("完成清单",r4.text)
+
+url5 = "https://www.wanandroid.com/lg/todo/done/25856/json"
+status="1"
+r5 = r.post(url= url5,data=status)
+print(r5.text)
