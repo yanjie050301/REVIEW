@@ -34,8 +34,8 @@ if __name__ == '__main__':
     url3 = "https://www.wanandroid.com/lg/todo/list/1"
     q = "https://www.wanandroid.com/lg/todo/done/"
     p ="https://www.wanandroid.com/lg/todo/delete/"
-    id = "26213"
-    url4 = p+id+"/json"
+    id = "26112"
+    url4 = q+id+"/json"
     method = "post"
     method1 = "get"
     # a = Httpconfig(url,method,data)

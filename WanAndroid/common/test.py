@@ -39,11 +39,12 @@ r1 = r.post(url=url,data=data)
 # r4 = r.post(url=url2)
 # print("删除清单",r4.text)
 
-# url2 = "https://www.wanandroid.com/lg/todo/done/26215/json"
-# r4 = r.post(url=url2)
-# print("完成清单",r4.text)
+url2 = "https://www.wanandroid.com/lg/todo/done/26112/json"
+r4 = r.post(url=url2)
+print("完成清单",r4.text)
 
-url5 = "https://www.wanandroid.com/lg/todo/done/25856/json"
-status="1"
-r5 = r.post(url= url5,data=status)
-print(r5.text)
+# url5 = "https://www.wanandroid.com/lg/todo/done/25856/json"
+# status="1"
+# r5 = r.post(url= url5,data=status)
+# print(r5.text)
+# print (time.strftime("%Y-%m-%d"))

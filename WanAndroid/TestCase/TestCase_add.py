@@ -3,7 +3,7 @@
 1.添加待办清单接口
 2.使用unittest框架，执行测试用例
 """
-import unittest,json
+import unittest,json,time
 from ddt import ddt,data
 from WanAndroid.common.readexcle import Readexcle
 from WanAndroid.common.httpconfig import Httpconfig
@@ -24,9 +24,12 @@ class TestCase(unittest.TestCase):
         :param string:
         :return:
         """
+        t = time.strftime("%Y-%m-%d")  #获取当前的年月日
+        print(f"当前时间为{t}")
         url = values[3]
         method = values[4]
         prams = eval(values[5])
+        prams["date"] = t   #提交的时间更改为当前的年月日
         ht = Httpconfig()
         coo = ht.login()    #获取用户登录的cookie
         htt = Httpconfig(url,method,prams,coo)
@@ -75,9 +78,9 @@ class TestCase(unittest.TestCase):
         print("用例环境结束")
     def tearDownClass(cls):
         print("测试环境结束")
-# unittest.main
-if __name__ == '__main__':
-    unittest.main()
+unittest.main
+# if __name__ == '__main__':
+#     unittest.main()
 
 
 
