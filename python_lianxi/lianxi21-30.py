@@ -68,7 +68,7 @@ out(s,l)
 思想：
 1.递归
 """
-
+"""
 def people(num):
     if num == 1:
         f = 10
@@ -78,12 +78,46 @@ def people(num):
 
 
 print(people(5))
-
-
-
-
-
-
+"""
+"""
+****************二十五、给一个不多于5位的正整数，要求：一、求它是几位数，二、逆序打印出各位数字。
+思想：
+1.分解数字
+"""
+def num(n):
+    l = str(n)
+    if len(l) >5 or n <=0:
+        print("请输入不多于5位的正整数")
+    elif len(l) == 5:
+        print(f"该数字为{len(l)}位数")
+        yi = int(n/10000)
+        er = int(n%10000/1000)
+        san = int(n%1000/100)
+        si = int(n%100/10)
+        wu = n%10
+        print("逆序打印为：",wu,si,san,er,yi)
+    elif len(l) == 4:
+        print(f"该数字为{len(l)}位数")
+        er = int(n%10000/1000)
+        san = int(n%1000/100)
+        si = int(n%100/10)
+        wu = n%10
+        print("逆序打印为：",wu,si,san,er)
+    elif len(l) == 3:
+        print(f"该数字为{len(l)}位数")
+        san = int(n % 1000 / 100)
+        si = int(n % 100 / 10)
+        wu = n % 10
+        print("逆序打印为：", wu, si, san)
+    elif len(l) == 2:
+        print(f"该数字为{len(l)}位数")
+        si = int(n % 100 / 10)
+        wu = n % 10
+        print("逆序打印为：", wu, si)
+    elif len(l) == 1:
+        print(f"该数字为{len(l)}位数")
+        print("逆序打印为：",n)
+num(4)
 
 
 
