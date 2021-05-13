@@ -1,0 +1,958 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>接口自动化测试报告</title>
+    <meta name="generator" content="HTMLTestRunner 1.0.0.0"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="https://cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
+    <!--  <script src="js/jquery-3.3.1.min.js"></script> -->
+    <!--  <script src="js/bootstrap.min.js"></script> -->
+    
+<style type="text/css" media="screen">
+body        { font-family: Microsoft YaHei,Tahoma,arial,helvetica,sans-serif;padding: 20px; font-size: 80%; }
+table       { font-size: 100%; }
+
+/* -- heading ---------------------------------------------------------------------- */
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+
+/* -- report ------------------------------------------------------------------------ */
+#total_row  { font-weight: bold; }
+.passCase   { color: #5cb85c; }
+.failCase   { color: #d9534f; font-weight: bold; }
+.errorCase  { color: #f0ad4e; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+</style>
+
+</head>
+<body >
+<script language="javascript" type="text/javascript">
+output_list = Array();
+
+/*level 调整增加只显示通过用例的分类 
+0:Summary //all hiddenRow
+1:Failed  //pt hiddenRow, ft none
+2:Pass    //pt none, ft hiddenRow
+3:All     //pt none, ft none
+*/
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level == 2 || level == 0 ) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level < 2) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+    }
+
+    //加入【详细】切换文字变化 
+    detail_class=document.getElementsByClassName('detail');
+	//console.log(detail_class.length)
+	if (level == 3) {
+		for (var i = 0; i < detail_class.length; i++){
+			detail_class[i].innerHTML="收起"
+		}
+	}
+	else{
+			for (var i = 0; i < detail_class.length; i++){
+			detail_class[i].innerHTML="详细"
+		}
+	}
+}
+
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        //ID修改 点 为 下划线
+        tid0 = 't' + cid.substr(1) + '_' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        //修改点击无法收起的BUG，加入【详细】切换文字变化 
+        if (toHide) {
+            document.getElementById(tid).className = 'hiddenRow';
+            document.getElementById(cid).innerText = "详细"
+        }
+        else {
+            document.getElementById(tid).className = '';
+            document.getElementById(cid).innerText = "收起"
+        }
+    }
+}
+
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+</script>
+<div class='heading'>
+<h1 style="font-family: Microsoft YaHei">接口自动化测试报告</h1>
+<p class='attribute'><strong>测试人员 : </strong> 自动化测试</p>
+<p class='attribute'><strong>开始时间 : </strong> 2021-05-12 16:17:59</p>
+<p class='attribute'><strong>合计耗时 : </strong> 0:00:17.128272</p>
+<p class='attribute'><strong>测试结果 : </strong> 共 32，通过 29，失败 1，错误 2，通过率= 90.62%</p>
+
+<p class='description'>测试情况</p>
+</div>
+
+
+
+<p id='show_detail_line'>
+<a class="btn btn-primary" href='javascript:showCase(0)'>通过率 - 90.62% </a>
+<a class="btn btn-danger" href='javascript:showCase(1)'>失败 - 1 </a>
+<a class="btn btn-success" href='javascript:showCase(2)'>通过 - 29 </a>
+<a class="btn btn-info" href='javascript:showCase(3)'>所有 - 32 </a>
+</p>
+<table id='result_table' class="table table-condensed table-bordered table-hover">
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row' class="text-center success" style="font-weight: bold;font-size: 14px;">
+    <td>用例集/测试用例</td>
+    <td>总计</td>
+    <td>通过</td>
+    <td>失败</td>
+    <td>错误</td>
+    <td>详细</td>
+</tr>
+
+<tr class='passClass warning'>
+    <td>TestCase_add.TestCase</td>
+    <td class="text-center">12</td>
+    <td class="text-center">12</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c1',12)" class="detail" id='c1'>详细</a></td>
+</tr>
+
+<tr id='pt1_1' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_add_01__1_0___添加待办清单____在第一个标签上_正常添加数据____https___www_wanandroid_com_lg_todo_add_json____post______title___ceshi0000___content___ddddd___date___2021_03_31___type__0_____ceshi0000____ceshi0000___200_0___pass____cookies____验证title字段值是否与提交的title一致__</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 
+    <button id='btn_pt1_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_1'>通过</button>
+    <div id='div_pt1_1' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -->
+    <button id='btn_pt1_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_1'>通过</button>
+    <div id='div_pt1_1' class="collapse in">
+    <pre>
+    
+pt1_1: 用例环境准备
+当前时间为2021-05-12
+('{"data":{"completeDate":null,"completeDateStr":"","content":"ddddd","date":1620748800000,"dateStr":"2021-05-12","id":26380,"priority":0,"status":0,"title":"ceshi0000","type":0,"userId":86493},"errorCode":0,"errorMsg":""}', 200)
+555555555555 &lt;class 'str'&gt;
+用例环境结束
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_2' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_add_02__2_0___添加待办清单____在第二个标签上_正常添加数据____https___www_wanandroid_com_lg_todo_add_json____post______title___ceshi1111___content___ddddd___date___2021_03_31___type__1_____ceshi1111____ceshi1111___200_0___pass____cookies____验证title字段值是否与提交的title一致__</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 
+    <button id='btn_pt1_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_2'>通过</button>
+    <div id='div_pt1_2' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -->
+    <button id='btn_pt1_2' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_2'>通过</button>
+    <div id='div_pt1_2' class="collapse in">
+    <pre>
+    
+pt1_2: 用例环境准备
+当前时间为2021-05-12
+('{"data":{"completeDate":null,"completeDateStr":"","content":"ddddd","date":1620748800000,"dateStr":"2021-05-12","id":26381,"priority":0,"status":0,"title":"ceshi1111","type":1,"userId":86493},"errorCode":0,"errorMsg":""}', 200)
+555555555555 &lt;class 'str'&gt;
+用例环境结束
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_3' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_add_03__3_0___添加待办清单____在第三个标签上_正常添加数据____https___www_wanandroid_com_lg_todo_add_json____post______title___ceshi2222___content___ddddd___date___2021_03_31___type__2_____ceshi2222____ceshi2222___200_0___pass____cookies____验证title字段值是否与提交的title一致__</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 
+    <button id='btn_pt1_3' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_3'>通过</button>
+    <div id='div_pt1_3' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -->
+    <button id='btn_pt1_3' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_3'>通过</button>
+    <div id='div_pt1_3' class="collapse in">
+    <pre>
+    
+pt1_3: 用例环境准备
+当前时间为2021-05-12
+('{"data":{"completeDate":null,"completeDateStr":"","content":"ddddd","date":1620748800000,"dateStr":"2021-05-12","id":26382,"priority":0,"status":0,"title":"ceshi2222","type":2,"userId":86493},"errorCode":0,"errorMsg":""}', 200)
+555555555555 &lt;class 'str'&gt;
+用例环境结束
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_4' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_add_04__4_0___添加待办清单____在第四个标签上_正常添加数据____https___www_wanandroid_com_lg_todo_add_json____post______title___ceshi3333___content___ddddd___date___2021_03_31___type__3_____ceshi3333____ceshi3333___200_0___pass____cookies____验证title字段值是否与提交的title一致__</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 
+    <button id='btn_pt1_4' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_4'>通过</button>
+    <div id='div_pt1_4' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -->
+    <button id='btn_pt1_4' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_4'>通过</button>
+    <div id='div_pt1_4' class="collapse in">
+    <pre>
+    
+pt1_4: 用例环境准备
+当前时间为2021-05-12
+('{"data":{"completeDate":null,"completeDateStr":"","content":"ddddd","date":1620748800000,"dateStr":"2021-05-12","id":26383,"priority":0,"status":0,"title":"ceshi3333","type":3,"userId":86493},"errorCode":0,"errorMsg":""}', 200)
+555555555555 &lt;class 'str'&gt;
+用例环境结束
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_5' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_add_05__5_0___添加待办清单____在第一个标签上_正常添加数据____https___www_wanandroid_com_lg_todo_add_json____post______title___ceshi0001___content___ddddd___date___2021_03_31___type__0_____ceshi0001____ceshi0001___200_0___pass____cookies____验证title字段值是否与提交的title一致__</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 
+    <button id='btn_pt1_5' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_5'>通过</button>
+    <div id='div_pt1_5' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -->
+    <button id='btn_pt1_5' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_5'>通过</button>
+    <div id='div_pt1_5' class="collapse in">
+    <pre>
+    
+pt1_5: 用例环境准备
+当前时间为2021-05-12
+('{"data":{"completeDate":null,"completeDateStr":"","content":"ddddd","date":1620748800000,"dateStr":"2021-05-12","id":26384,"priority":0,"status":0,"title":"ceshi0001","type":0,"userId":86493},"errorCode":0,"errorMsg":""}', 200)
+555555555555 &lt;class 'str'&gt;
+用例环境结束
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_6' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_add_06__6_0___添加待办清单____在第二个标签上_正常添加数据____https___www_wanandroid_com_lg_todo_add_json____post______title___ceshi1112___content___ddddd___date___2021_03_31___type__1_____ceshi1112____ceshi1112___200_0___pass____cookies____验证title字段值是否与提交的title一致__</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 
+    <button id='btn_pt1_6' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_6'>通过</button>
+    <div id='div_pt1_6' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -->
+    <button id='btn_pt1_6' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_6'>通过</button>
+    <div id='div_pt1_6' class="collapse in">
+    <pre>
+    
+pt1_6: 用例环境准备
+当前时间为2021-05-12
+('{"data":{"completeDate":null,"completeDateStr":"","content":"ddddd","date":1620748800000,"dateStr":"2021-05-12","id":26385,"priority":0,"status":0,"title":"ceshi1112","type":1,"userId":86493},"errorCode":0,"errorMsg":""}', 200)
+555555555555 &lt;class 'str'&gt;
+用例环境结束
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_7' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_add_07__7_0___添加待办清单____在第三个标签上_正常添加数据____https___www_wanandroid_com_lg_todo_add_json____post______title___ceshi2223___content___ddddd___date___2021_03_31___type__2_____ceshi2223____ceshi2223___200_0___pass____cookies____验证title字段值是否与提交的title一致__</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 
+    <button id='btn_pt1_7' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_7'>通过</button>
+    <div id='div_pt1_7' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -->
+    <button id='btn_pt1_7' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_7'>通过</button>
+    <div id='div_pt1_7' class="collapse in">
+    <pre>
+    
+pt1_7: 用例环境准备
+当前时间为2021-05-12
+('{"data":{"completeDate":null,"completeDateStr":"","content":"ddddd","date":1620748800000,"dateStr":"2021-05-12","id":26386,"priority":0,"status":0,"title":"ceshi2223","type":2,"userId":86493},"errorCode":0,"errorMsg":""}', 200)
+555555555555 &lt;class 'str'&gt;
+用例环境结束
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_8' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_add_08__8_0___添加待办清单____在第四个标签上_正常添加数据____https___www_wanandroid_com_lg_todo_add_json____post______title___ceshi3334___content___ddddd___date___2021_03_31___type__3_____ceshi3334____ceshi3334___200_0___pass____cookies____验证title字段值是否与提交的title一致__</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 
+    <button id='btn_pt1_8' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_8'>通过</button>
+    <div id='div_pt1_8' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -->
+    <button id='btn_pt1_8' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_8'>通过</button>
+    <div id='div_pt1_8' class="collapse in">
+    <pre>
+    
+pt1_8: 用例环境准备
+当前时间为2021-05-12
+('{"data":{"completeDate":null,"completeDateStr":"","content":"ddddd","date":1620748800000,"dateStr":"2021-05-12","id":26387,"priority":0,"status":0,"title":"ceshi3334","type":3,"userId":86493},"errorCode":0,"errorMsg":""}', 200)
+555555555555 &lt;class 'str'&gt;
+用例环境结束
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_9' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_add_09__9_0___添加待办清单____在不存在的标签上添加数据____https___www_wanandroid_com_lg_todo_add_json____post______title___ceshi5555___content___ddddd___date___2021_03_31___type__4_____ceshi5555____ceshi5555___200_0___pass____cookies____网站没有做校验_是可以提交成功_验证title字段值是否与提交的title一致__</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 
+    <button id='btn_pt1_9' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_9'>通过</button>
+    <div id='div_pt1_9' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -->
+    <button id='btn_pt1_9' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_9'>通过</button>
+    <div id='div_pt1_9' class="collapse in">
+    <pre>
+    
+pt1_9: 用例环境准备
+当前时间为2021-05-12
+('{"data":{"completeDate":null,"completeDateStr":"","content":"ddddd","date":1620748800000,"dateStr":"2021-05-12","id":26388,"priority":0,"status":0,"title":"ceshi5555","type":4,"userId":86493},"errorCode":0,"errorMsg":""}', 200)
+555555555555 &lt;class 'str'&gt;
+用例环境结束
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_10' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_add_10__10_0___添加待办清单____已删除的标签上添加数据____https___www_wanandroid_com_lg_todo_add_json____post______title___ceshi6666___content___ddddd___date___2021_03_31___type__5_____ceshi6666____ceshi6666___200_0___pass____cookies____网站无法删除_无法校验__验证title字段值是否与提交的title一致__</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 
+    <button id='btn_pt1_10' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_10'>通过</button>
+    <div id='div_pt1_10' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -->
+    <button id='btn_pt1_10' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_10'>通过</button>
+    <div id='div_pt1_10' class="collapse in">
+    <pre>
+    
+pt1_10: 用例环境准备
+当前时间为2021-05-12
+('{"data":{"completeDate":null,"completeDateStr":"","content":"ddddd","date":1620748800000,"dateStr":"2021-05-12","id":26389,"priority":0,"status":0,"title":"ceshi6666","type":5,"userId":86493},"errorCode":0,"errorMsg":""}', 200)
+555555555555 &lt;class 'str'&gt;
+用例环境结束
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_11' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_add_11__11_0___添加待办清单____添加的数据标题为空____https___www_wanandroid_com_lg_todo_add_json____post______title______content___ddddd___date___2021_03_31___type__0_____标题不能为空_____标题不能为空____200_0___pass____cookies____验证errorMsg字段值__</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 
+    <button id='btn_pt1_11' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_11'>通过</button>
+    <div id='div_pt1_11' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -->
+    <button id='btn_pt1_11' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_11'>通过</button>
+    <div id='div_pt1_11' class="collapse in">
+    <pre>
+    
+pt1_11: 用例环境准备
+当前时间为2021-05-12
+('{"data":null,"errorCode":-1,"errorMsg":"标题不能为空！"}', 200)
+用例环境结束
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_12' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_add_12__12_0___添加待办清单____添加的数据标题为null____https___www_wanandroid_com_lg_todo_add_json____post______title___null___content___ddddd___date___2021_03_31___type__0_____标题不能为空_____标题不能为空____200_0___pass____cookies____验证errorMsg字段值__</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 
+    <button id='btn_pt1_12' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_12'>通过</button>
+    <div id='div_pt1_12' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -->
+    <button id='btn_pt1_12' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_12'>通过</button>
+    <div id='div_pt1_12' class="collapse in">
+    <pre>
+    
+pt1_12: 用例环境准备
+当前时间为2021-05-12
+('{"data":null,"errorCode":-1,"errorMsg":"标题不能为空！"}', 200)
+用例环境结束
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr class='errorClass warning'>
+    <td>unittest.suite._ErrorHolder</td>
+    <td class="text-center">2</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
+    <td class="text-center">2</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c2',2)" class="detail" id='c2'>详细</a></td>
+</tr>
+
+<tr id='ft2_1' class='none'>
+    <td class='errorCase'><div class='testcase'>TestCase)</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 
+    <button id='btn_ft2_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_1'>错误</button>
+    <div id='div_ft2_1' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -->
+    <button id='btn_ft2_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_1'>错误</button>
+    <div id='div_ft2_1' class="collapse in">
+    <pre>
+    
+ft2_1: 用例环境准备
+当前时间为2021-05-12
+('{"data":null,"errorCode":-1,"errorMsg":"标题不能为空！"}', 200)
+用例环境结束
+TypeError: tearDownClass() missing 1 required positional argument: 'cls'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft2_2' class='none'>
+    <td class='errorCase'><div class='testcase'>TestCase_delect)</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 
+    <button id='btn_ft2_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_2'>错误</button>
+    <div id='div_ft2_2' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -->
+    <button id='btn_ft2_2' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_2'>错误</button>
+    <div id='div_ft2_2' class="collapse in">
+    <pre>
+    
+ft2_2: 用例环境开始
+用例环境结束
+TypeError: tearDownClass() missing 1 required positional argument: 'cls'
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr class='passClass warning'>
+    <td>TestCase_delete.TestCase_delect</td>
+    <td class="text-center">5</td>
+    <td class="text-center">5</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c3',5)" class="detail" id='c3'>详细</a></td>
+</tr>
+
+<tr id='pt3_1' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_delete_1__1_0___删除待办清单____删除已存在的清单___26370_0___https___www_wanandroid_com_lg_todo_delete_____post____null___0_0__0_0__200_0___pass____验证errorCode的值是否为0____url是清单id和链接拼接的_完整的url为_https___www_wanandroid_com_lg_todo_delect_12554_json__</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 
+    <button id='btn_pt3_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt3_1'>通过</button>
+    <div id='div_pt3_1' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -->
+    <button id='btn_pt3_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt3_1'>通过</button>
+    <div id='div_pt3_1' class="collapse in">
+    <pre>
+    
+pt3_1: 用例环境开始
+用例环境结束
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt3_2' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_delete_2__2_0___删除待办清单____删除已存在的清单___26371_0___https___www_wanandroid_com_lg_todo_delete_____post____null___0_0__0_0__200_0___pass____验证errorCode的值是否为0______</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 
+    <button id='btn_pt3_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt3_2'>通过</button>
+    <div id='div_pt3_2' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -->
+    <button id='btn_pt3_2' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt3_2'>通过</button>
+    <div id='div_pt3_2' class="collapse in">
+    <pre>
+    
+pt3_2: 用例环境开始
+用例环境结束
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt3_3' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_delete_3__3_0___删除待办清单____删除已存在的清单___26372_0___https___www_wanandroid_com_lg_todo_delete_____post____null___0_0__0_0__200_0___pass____验证errorCode的值是否为0______</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 
+    <button id='btn_pt3_3' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt3_3'>通过</button>
+    <div id='div_pt3_3' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -->
+    <button id='btn_pt3_3' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt3_3'>通过</button>
+    <div id='div_pt3_3' class="collapse in">
+    <pre>
+    
+pt3_3: 用例环境开始
+用例环境结束
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt3_4' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_delete_4__4_0___删除待办清单____删除已存在的清单___26373_0___https___www_wanandroid_com_lg_todo_delete_____post____null___0_0__0_0__200_0___pass____验证errorCode的值是否为0______</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 
+    <button id='btn_pt3_4' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt3_4'>通过</button>
+    <div id='div_pt3_4' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -->
+    <button id='btn_pt3_4' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt3_4'>通过</button>
+    <div id='div_pt3_4' class="collapse in">
+    <pre>
+    
+pt3_4: 用例环境开始
+用例环境结束
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt3_5' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_delete_5__5_0___删除待办清单____删除不存在的清单___11111_0___https___www_wanandroid_com_lg_todo_delete_____post____null___0_0__0_0__200_0___pass____验证errorCode的值是否为0______</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 
+    <button id='btn_pt3_5' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt3_5'>通过</button>
+    <div id='div_pt3_5' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -->
+    <button id='btn_pt3_5' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt3_5'>通过</button>
+    <div id='div_pt3_5' class="collapse in">
+    <pre>
+    
+pt3_5: 用例环境开始
+用例环境结束
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr class='passClass warning'>
+    <td>TestCase_get.TestCase</td>
+    <td class="text-center">4</td>
+    <td class="text-center">4</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c4',4)" class="detail" id='c4'>详细</a></td>
+</tr>
+
+<tr id='pt4_1' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_get_1__1_0___获取清单列表____获取清单第一个列表____https___www_wanandroid_com_lg_todo_list_0____get____null____ceshi0000____ceshi0000___200_0___pass____cookies____验证该清单有新添加的信息____预期结果为上一个添加清单返回的title值_要写到表格对应预期结果的位置__</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 
+    <button id='btn_pt4_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt4_1'>通过</button>
+    <div id='div_pt4_1' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -->
+    <button id='btn_pt4_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt4_1'>通过</button>
+    <div id='div_pt4_1' class="collapse in">
+    <pre>
+    
+pt4_1: 用例环境准备
+用例环境结束
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt4_2' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_get_2__2_0___获取清单列表____获取清单第二个列表____https___www_wanandroid_com_lg_todo_list_1____get____null____ceshi1111____ceshi1111___200_0___pass____cookies____验证该清单有新添加的信息______</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 
+    <button id='btn_pt4_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt4_2'>通过</button>
+    <div id='div_pt4_2' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -->
+    <button id='btn_pt4_2' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt4_2'>通过</button>
+    <div id='div_pt4_2' class="collapse in">
+    <pre>
+    
+pt4_2: 用例环境准备
+用例环境结束
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt4_3' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_get_3__3_0___获取清单列表____获取清单第三个列表____https___www_wanandroid_com_lg_todo_list_2____get____null____ceshi2222____ceshi2222___200_0___pass____cookies____验证该清单有新添加的信息______</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 
+    <button id='btn_pt4_3' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt4_3'>通过</button>
+    <div id='div_pt4_3' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -->
+    <button id='btn_pt4_3' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt4_3'>通过</button>
+    <div id='div_pt4_3' class="collapse in">
+    <pre>
+    
+pt4_3: 用例环境准备
+用例环境结束
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt4_4' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_get_4__4_0___获取清单列表____获取清单第四个列表____https___www_wanandroid_com_lg_todo_list_3____get____null____ceshi3333____ceshi3333___200_0___pass____cookies____验证该清单有新添加的信息______</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 
+    <button id='btn_pt4_4' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt4_4'>通过</button>
+    <div id='div_pt4_4' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -->
+    <button id='btn_pt4_4' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt4_4'>通过</button>
+    <div id='div_pt4_4' class="collapse in">
+    <pre>
+    
+pt4_4: 用例环境准备
+用例环境结束
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr class='failClass warning'>
+    <td>TestCase_login.Wanandroid</td>
+    <td class="text-center">9</td>
+    <td class="text-center">8</td>
+    <td class="text-center">1</td>
+    <td class="text-center">0</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c5',9)" class="detail" id='c5'>详细</a></td>
+</tr>
+
+<tr id='pt5_1' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_1__1_0___登录接口____正确的账密登录____https___www_wanandroid_com_user_login____post______username___yanjie000___password___123123_____0_0__0_0__200_0___pass____验证errorCode字段值__</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 
+    <button id='btn_pt5_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt5_1'>通过</button>
+    <div id='div_pt5_1' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -->
+    <button id='btn_pt5_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt5_1'>通过</button>
+    <div id='div_pt5_1' class="collapse in">
+    <pre>
+    
+pt5_1: 每条测试用例开始
+写入表格成功
+执行完毕
+每条测试用例结束
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt5_2' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_2__2_0___登录接口____错误的账密登录____https___www_wanandroid_com_user_login____post______username___yanjie000___password___123000______1_0___1_0__200_0___pass____验证errorCode字段值__</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 
+    <button id='btn_pt5_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt5_2'>通过</button>
+    <div id='div_pt5_2' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -->
+    <button id='btn_pt5_2' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt5_2'>通过</button>
+    <div id='div_pt5_2' class="collapse in">
+    <pre>
+    
+pt5_2: 每条测试用例开始
+写入表格成功
+执行完毕
+每条测试用例结束
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft5_3' class='none'>
+    <td class='failCase'><div class='testcase'>test_login_3__3_0___登录接口____未注册的账密登录____https___www_wanandroid_com_user_login____post______username___fff___password___123123_____2_0___1_0__200_0___fail____验证errorCode字段值__</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 
+    <button id='btn_ft5_3' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft5_3'>失败</button>
+    <div id='div_ft5_3' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -->
+    <button id='btn_ft5_3' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft5_3'>失败</button>
+    <div id='div_ft5_3' class="collapse in">
+    <pre>
+    
+ft5_3: 每条测试用例开始
+写入表格成功
+执行完毕
+每条测试用例结束
+Traceback (most recent call last):
+  File "F:\test\selenium\untitled\venv\lib\site-packages\ddt.py", line 182, in wrapper
+    return func(self, *args, **kwargs)
+  File "F:\test\selenium\untitled\REVIEW\WanAndroid\TestCase\TestCase_login.py", line 53, in test_login
+    self.assertEqual(expected_results, errorCode, msg="用例失败")
+AssertionError: 2 != -1 : 用例失败
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt5_4' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_4__4_0___登录接口____冻结的账密登录____https___www_wanandroid_com_user_login____post______username___dongjie___password___123123______1_0___1_0__200_0___pass____验证errorCode字段值__</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 
+    <button id='btn_pt5_4' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt5_4'>通过</button>
+    <div id='div_pt5_4' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -->
+    <button id='btn_pt5_4' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt5_4'>通过</button>
+    <div id='div_pt5_4' class="collapse in">
+    <pre>
+    
+pt5_4: 每条测试用例开始
+写入表格成功
+执行完毕
+每条测试用例结束
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt5_5' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_5__5_0___登录接口____注销的账密登录____https___www_wanandroid_com_user_login____post______username___zhuxiao___password___123123______1_0___1_0__200_0___pass____验证errorCode字段值__</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 
+    <button id='btn_pt5_5' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt5_5'>通过</button>
+    <div id='div_pt5_5' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -->
+    <button id='btn_pt5_5' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt5_5'>通过</button>
+    <div id='div_pt5_5' class="collapse in">
+    <pre>
+    
+pt5_5: 每条测试用例开始
+写入表格成功
+执行完毕
+每条测试用例结束
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt5_6' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_6__6_0___登录接口____username字段为null____https___www_wanandroid_com_user_login____post______username___null___password___123123______1_0___1_0__200_0___pass____验证errorCode字段值__</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 
+    <button id='btn_pt5_6' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt5_6'>通过</button>
+    <div id='div_pt5_6' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -->
+    <button id='btn_pt5_6' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt5_6'>通过</button>
+    <div id='div_pt5_6' class="collapse in">
+    <pre>
+    
+pt5_6: 每条测试用例开始
+写入表格成功
+执行完毕
+每条测试用例结束
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt5_7' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_7__7_0___登录接口____password字段为null____https___www_wanandroid_com_user_login____post______username___yanjie000___password___null______1_0___1_0__200_0___pass____验证errorCode字段值__</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 
+    <button id='btn_pt5_7' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt5_7'>通过</button>
+    <div id='div_pt5_7' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -->
+    <button id='btn_pt5_7' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt5_7'>通过</button>
+    <div id='div_pt5_7' class="collapse in">
+    <pre>
+    
+pt5_7: 每条测试用例开始
+写入表格成功
+执行完毕
+每条测试用例结束
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt5_8' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_8__8_0___登录接口____username字段为空____https___www_wanandroid_com_user_login____post______username_______password___123123______1_0___1_0__200_0___pass____验证errorCode字段值__</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 
+    <button id='btn_pt5_8' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt5_8'>通过</button>
+    <div id='div_pt5_8' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -->
+    <button id='btn_pt5_8' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt5_8'>通过</button>
+    <div id='div_pt5_8' class="collapse in">
+    <pre>
+    
+pt5_8: 每条测试用例开始
+写入表格成功
+执行完毕
+每条测试用例结束
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt5_9' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_9__9_0___登录接口____password字段为空____https___www_wanandroid_com_user_login____post______username___yanjie000___password__________1_0___1_0__200_0___pass____验证errorCode字段值__</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 
+    <button id='btn_pt5_9' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt5_9'>通过</button>
+    <div id='div_pt5_9' class="collapse">  -->
+
+    <!-- 默认展开错误信息 -->
+    <button id='btn_pt5_9' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt5_9'>通过</button>
+    <div id='div_pt5_9' class="collapse in">
+    <pre>
+    
+pt5_9: 每条测试用例开始
+写入表格成功
+执行完毕
+每条测试用例结束
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='total_row' class="text-center active">
+    <td>总计</td>
+    <td>32</td>
+    <td>29</td>
+    <td>1</td>
+    <td>2</td>
+    <td>通过率：90.62%</td>
+</tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+    <div style=" position:fixed;right:50px; bottom:30px; width:20px; height:20px;cursor:pointer">
+    <a href="#"><span class="glyphicon glyphicon-eject" style = "font-size:30px;" aria-hidden="true">
+    </span></a></div>
+    
+
+</body>
+</html>

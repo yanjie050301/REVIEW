@@ -34,7 +34,7 @@ class TestCase_delect(unittest.TestCase):
         actual_results = r_json.get("errorCode")     #获取服务器返回的错误码
         id = values[0]   #获取表格id
         expected_results = int(values[7])   #获取预期结果
-        w = Writeexcle(4)
+        w = Writeexcle(3)
         w.rewrite(id,8,actual_results)
         w.rewrite(id,9,status)
         if expected_results == actual_results:
@@ -46,9 +46,9 @@ class TestCase_delect(unittest.TestCase):
         print("用例环境结束")
     def tearDownClass(cls):
         print("测试环境结束")
-unittest.main
-# if __name__ == '__main__':
-#     unittest.main()
+# unittest.main
+if __name__ == '__main__':
+    unittest.main()
 
 
 

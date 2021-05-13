@@ -84,6 +84,7 @@ print(people(5))
 思想：
 1.分解数字
 """
+"""
 def num(n):
     l = str(n)
     if len(l) >5 or n <=0:
@@ -118,9 +119,28 @@ def num(n):
         print(f"该数字为{len(l)}位数")
         print("逆序打印为：",n)
 num(4)
+"""
+"""
+****************二十五、一个5位数，判断它是不是回文数。即12321是回文数，个位与万位相同，十位与千位相同。
+思想：
+无
+"""
+def num(n):
+    l = str(n)
+    if len(l) !=5:
+        print("请输入5位的正整数")
+    elif len(l) == 5:
+        yi = int(n/10000)
+        er = int(n%10000/1000)
+        san = int(n%1000/100)
+        si = int(n%100/10)
+        wu = n%10
+        if yi == wu and er == si:
+            print("该数字为回文数")
+        else:
+            print("该数字不是回文数")
 
-
-
+num(45554)
 
 
 

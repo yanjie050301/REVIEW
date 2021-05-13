@@ -56,6 +56,6 @@ class Wanandroid(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         print("测试结束")
-unittest.main
-# if __name__ == '__main__':
-#     unittest.main()
+# unittest.main
+if __name__ == '__main__':
+    unittest.main()
