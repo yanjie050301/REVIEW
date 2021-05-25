@@ -148,6 +148,7 @@ num(45554)
 思想：
 冒泡排序
 """
+"""
 li = [4,56,3,58,62,41,23,5,78,9]
 le = len(li)
 for a in range(0,le):
@@ -157,10 +158,26 @@ for a in range(0,le):
             li[b] = li[b+1]
             li[b+1] = c
 print(li)
+"""
+"""
+****************二十八、有一个已经排好序的数组。现输入一个数，要求按原来的规律将它插入数组中。
+思想：
 
-
-
-
+"""
+li = [3,5,9,11,25,36,0]
+num = int(input("请输入一个数："))
+def paixu(num):
+    for a in range(0,len(li)):
+        if li[a]>num:
+            temp = li[a]
+            li[a] = num
+            for b in range(a+1,len(li)):
+                temp2 = li[b]
+                li[b] = temp
+                temp = temp2
+            break
+    print(li)
+paixu(num)
 
 
 
