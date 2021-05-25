@@ -8,6 +8,7 @@ from ddt import ddt,data
 from WanAndroid.common.readexcle import Readexcle
 from WanAndroid.common.httpconfig import Httpconfig
 from WanAndroid.common.writeexcle import Writeexcle
+from WanAndroid.common.logconfig import Logconfig
 excle = Readexcle("获取清单列表")
 excle_data = excle.getdata()
 @ddt
@@ -45,6 +46,8 @@ class TestCase(unittest.TestCase):
             else:
                 wr.rewrite(id, 9, "fail")
             self.assertEqual(actual_results,expected_results,msg="用例失败")
+            log = Logconfig()
+            log.info("获取清单用例执行结束")
     def tearDown(self):
         print("用例环境结束")
     @classmethod

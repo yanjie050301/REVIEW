@@ -35,7 +35,7 @@ class ConfigRead():
         return kvs
 if __name__ == '__main__':
     a = ConfigRead()
-    print(a.reademail("sender"))
+    print(a.reademail())
 
 
 

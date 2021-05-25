@@ -7,6 +7,7 @@
 """
 import os,unittest,time
 from HTMLTestRunner import HTMLTestRunner
+from WanAndroid.common.emailconfig import Emailcon
 
 class Runall():
     # 1.加载测试用例
@@ -25,11 +26,14 @@ class Runall():
         suitie = self.createTestSutie()  #加载测试用例
         # 用HTMLTestRunner运行测试集合，并生成测试报告
         file_time = time.strftime("%Y-%m-%d-%H-%M-%S",time.localtime())  #获取生成报告的当前时间
-        report_name = report_dir+file_time+"report.html"  #拼接生成的测试报告的路径及报告的名称
+        report_name = report_dir+"//"+file_time+"report.html"  #拼接生成的测试报告的路径及报告的名称
         with open(report_name,"wb") as fp:
             #3.生成测试结果-报告
             runner = HTMLTestRunner(stream=fp, title="接口自动化测试报告", description="测试情况")    #实例化
             runner.run(suitie)
+        #发送邮件
+        e = Emailcon()
+        e.sendemail()
 if __name__ == '__main__':
     c = Runall()
     c.runcase()

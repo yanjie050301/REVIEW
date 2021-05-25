@@ -15,8 +15,9 @@ class Test(unittest.TestCase):
     def testa(self,r):
         print(r)
         # self.assertEqual(value,value-1)
-if __name__ == '__main__':
-    unittest.main()
+unittest.main
+# if __name__ == '__main__':
+#     unittest.main()
 
 
 

@@ -8,6 +8,7 @@ from ddt import ddt,data
 from WanAndroid.common.readexcle import Readexcle
 from WanAndroid.common.httpconfig import Httpconfig
 from WanAndroid.common.writeexcle import Writeexcle
+from WanAndroid.common.logconfig import Logconfig
 data_add = Readexcle("添加待办清单")
 datas_add = data_add.getdata()   #从excle获取待办清单的数据
 @ddt
@@ -71,15 +72,16 @@ class TestCase(unittest.TestCase):
             if id in range(1,5):
                 wr_get.rewrite(id, 6, title)  # 将服务器返回数据的title值写去获取列表中的预期结果位置,只写前4条数据的值
                 wr_delete.rewrite(id, 3, qingdan_id)     #将服务器返回数据的清单id值写去删除清单列表中的uid位置
-
+        log = Logconfig()
+        log.info("添加清单用例执行完毕")
     def tearDown(self):
         print("用例环境结束")
+    @classmethod
     def tearDownClass(cls):
         print("测试环境结束")
 unittest.main
 # if __name__ == '__main__':
 #     unittest.main()
-
 
 
 

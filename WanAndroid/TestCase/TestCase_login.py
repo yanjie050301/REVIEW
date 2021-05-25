@@ -8,6 +8,7 @@ from ddt import ddt,data
 from WanAndroid.common.readexcle import Readexcle
 from WanAndroid.common.httpconfig import Httpconfig
 from WanAndroid.common.writeexcle import Writeexcle
+from WanAndroid.common.logconfig import Logconfig
 excle_login = Readexcle("登录接口")
 excle_data_login = excle_login.getdata()   #一个大列表嵌套测试数据的小列表
 @ddt
@@ -48,7 +49,8 @@ class Wanandroid(unittest.TestCase):
         else:
             print("写入表格成功")
         finally:
-            print("执行完毕")
+            log = Logconfig()
+            log.info("登录用例执行完毕")
         # 断言预期结果与实际结果是否一致
         self.assertEqual(expected_results, errorCode, msg="用例失败")
     def tearDown(self):
