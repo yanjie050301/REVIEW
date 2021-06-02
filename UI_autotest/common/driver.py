@@ -8,12 +8,15 @@
 """
 from appium import webdriver
 from UI_autotest.common.readconfig import Readconfig
+import time
 class Driver():
     def __init__(self):
         co = Readconfig()
         self.platformName = co.read_app("platformName")
-        self.platformVersion = co.read_app("platformVersion")
-        self.deviceName = co.read_app("deviceName")
+        self.platformVersion = co.read_vivo("platformVersion")
+        self.deviceName = co.read_vivo("deviceName")
+        # self.platformVersion = co.read_xiaomi9("platformVersion")
+        # self.deviceName = co.read_xiaomi9("deviceName")
         self.appPackage = co.read_app("appPackage")
         self.appActivity = co.read_app("appActivity")
         self.app = co.read_app("app")
@@ -27,7 +30,7 @@ class Driver():
             "appPackage": self.appPackage,
             "appActivity": self.appActivity,
             "app": self.app,
-            # "skipServerInstallation": False,  #禁止重复安装两个应用
+            "skipServerInstallation": False,  #禁止重复安装两个应用(oi.appium.uiautomator2.server和oi.appium.uiautomator2.server.test)
             "noReset": True    #禁止重复安装测试APP应用
         }
 
@@ -38,4 +41,5 @@ class Driver():
 if __name__ == '__main__':
     a = Driver()
     driver = a.start_session()
+    time.sleep(5)
     driver.quit()
