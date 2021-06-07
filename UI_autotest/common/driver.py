@@ -12,14 +12,19 @@ import time
 class Driver():
     def __init__(self):
         co = Readconfig()
-        self.platformName = co.read_app("platformName")
+
         self.platformVersion = co.read_vivo("platformVersion")
         self.deviceName = co.read_vivo("deviceName")
         # self.platformVersion = co.read_xiaomi9("platformVersion")
         # self.deviceName = co.read_xiaomi9("deviceName")
-        self.appPackage = co.read_app("appPackage")
-        self.appActivity = co.read_app("appActivity")
-        self.app = co.read_app("app")
+        # self.platformName = co.read_app_diaoyu("platformName")
+        # self.appPackage = co.read_app_diaoyu("appPackage")
+        # self.appActivity = co.read_app_diaoyu("appActivity")
+        # self.app = co.read_app_diaoyu("app")
+        self.platformName = co.read_app_news("platformName")
+        self.appPackage = co.read_app_news("appPackage")
+        self.appActivity = co.read_app_news("appActivity")
+        self.app = co.read_app_news("app")
         self.port = co.read_server("port")
         self.ip = co.read_server("ip")
     def start_session(self):
@@ -30,7 +35,7 @@ class Driver():
             "appPackage": self.appPackage,
             "appActivity": self.appActivity,
             "app": self.app,
-            "skipServerInstallation": False,  #禁止重复安装两个应用(oi.appium.uiautomator2.server和oi.appium.uiautomator2.server.test)
+            "skipServerInstallation": True,  #禁止重复安装两个应用(oi.appium.uiautomator2.server和oi.appium.uiautomator2.server.test)
             "noReset": True    #禁止重复安装测试APP应用
         }
 

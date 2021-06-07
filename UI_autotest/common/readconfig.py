@@ -3,7 +3,7 @@
 读取配置文件
 """
 import os,configparser
-config_file_path = os.path.dirname(os.path.dirname(__file__)) + "//config.ini"
+config_file_path = os.path.dirname(os.path.dirname(__file__)) + "/config.ini"
 
 class Readconfig():
     def __init__(self):
@@ -27,12 +27,21 @@ class Readconfig():
             return values
         except  Exception as  msg:
             print(msg)
-    def read_app(self,name = "all"):
+    def read_app_diaoyu(self,name = "all"):
         try:
             if name == "all":
-                values = self.cp.items("app")
+                values = self.cp.items("diaoyu")
             else:
-                values = self.cp.get("app",name)
+                values = self.cp.get("diaoyu",name)
+            return values
+        except  Exception as  msg:
+            print(msg)
+    def read_app_news(self,name = "all"):
+        try:
+            if name == "all":
+                values = self.cp.items("news")
+            else:
+                values = self.cp.get("news",name)
             return values
         except  Exception as  msg:
             print(msg)
@@ -47,4 +56,4 @@ class Readconfig():
             print(msg)
 if __name__ == '__main__':
     a = Readconfig()
-    print(a.read_app())
+    print(a.read_app_news())

@@ -1,6 +1,26 @@
 import requests
 import json
 
+url = "http://api.lemonban.com/futureloan/member/login"
+url1 = "http://api.lemonban.com/futureloan/member/register"
+data = {
+        'mobile_phone':18911032248,
+        'pwd': "lemonban"
+        }
+header = {
+    "X-Lemonban-Media-Type":"lemonban.v2",
+    "Content-Type" :"application/json"
+
+}
+data = json.dumps(data)
+
+r = requests.post(url=url,data=data,headers = header)
+print(r.json())
+
+
+
+
+
 """
 # 1.请求地址
 urlstr = "https://wanandroid.com/user/login"
