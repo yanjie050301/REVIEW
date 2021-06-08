@@ -51,6 +51,7 @@ elif c>a and c>b:
         print(a, end=" ,")
         print(b)
 """
+"""
 l = []
 a = int(input("num1:"))
 l.append(a)
@@ -65,12 +66,27 @@ for h in range(0,3):
         q = l[h]
 print(m,q,n)
 
+"""
+"""
+****************三十三、输入数组，最大的与第一个元素交换，最小的与最后一个元素交换，输出数组。
+思想：
+"""
+"""
+l = [45,2,5,63,25,48,55]
+m = max(l)
+n = min(l)
+for a in range(len(l)):
+    if l[a]==m:
+        i = l[0]
+        l[0] =l[a]
+        l[a]=i
+    if l[a]==n:
+        i = l[len(l)-1]
+        l[len(l)-1] =l[a]
+        l[a]=i
 
-
-
-
-
-
+print(l)
+"""
 
 
 
