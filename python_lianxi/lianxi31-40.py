@@ -88,11 +88,16 @@ for a in range(len(l)):
 print(l)
 """
 """
-****************三十三、有 n 个整数，使其前面各数顺序向后移 m 个位置，最后 m 个数变成最前面的 m 个数
+****************三十四、有 n 个整数，使其前面各数顺序向后移 m 个位置，最后 m 个数变成最前面的 m 个数
 思想：
 """
 """
-l = [1,2,3,4,5]
+x = input("请输入一个整数列表，使用逗号间隔：")
+li = x.split(",")
+l = []
+for c in range(len(li)):
+    i = int(li[c])
+    l.append(i)
 num = int(input("请输入向后移动几位："))
 def houyi(num):
     if num>=len(l) or num <=0:
