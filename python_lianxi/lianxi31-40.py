@@ -87,11 +87,28 @@ for a in range(len(l)):
 
 print(l)
 """
-
-
-
-
-
+"""
+****************三十三、有 n 个整数，使其前面各数顺序向后移 m 个位置，最后 m 个数变成最前面的 m 个数
+思想：
+"""
+"""
+l = [1,2,3,4,5]
+num = int(input("请输入向后移动几位："))
+def houyi(num):
+    if num>=len(l) or num <=0:
+        return "输入的数字小于0或大于列表长度，请输入正确的数字"
+    else:
+        print(f"移动前列表为{l}")
+        for a in range(num):
+            b = len(l)-1
+            item = l[b]
+            while b >=0:
+                l[b] = l[b-1]
+                b = b-1
+            l[0] = item
+        return f"移动后列表为{l}"
+print(houyi(num))
+"""
 
 
 
