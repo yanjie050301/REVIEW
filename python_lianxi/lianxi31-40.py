@@ -119,34 +119,52 @@ print(houyi(num))
 思想：
 """
 
-if __name__ == '__main__':
-    nmax = 50
-    n = int(input('请输入总人数:'))
-    num = []
-    for i in range(n):
-        num.append(i + 1)
 
-    i = 0
-    k = 0
-    m = 0
+# n = int(input('请输入总人数:'))
+# num = []
+# for i in range(n):
+#     num.append(i + 1)
+# num = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+# n = len(num)
+# i = 0
+# k = 0
+# m = 0
+#
+# while m < n - 1:
+#     if num[i] != 0: k += 1
+#     if k == 3:
+#         num[i] = 0
+#         k = 0
+#         m += 1
+#     i += 1
+#     if i == n: i = 0
+#
+# i = 0
+# while num[i] == 0: i += 1
+# print(num[i])
 
-    while m < n - 1:
-        if num[i] != 0: k += 1
-        if k == 3:
-            num[i] = 0
-            k = 0
-            m += 1
-        i += 1
-        if i == n: i = 0
+l = [1,2,3,4,5,6,7,8,9,10]
+b = 0
+a = 0
 
-    i = 0
-    while num[i] == 0: i += 1
-    print(num[i])
-
-
-
-
-
+while a <= len(l) - 1:
+    if l[a] != 0:
+        b = b + 1
+    if b == 3:
+        l[a] = 0
+        b = 0
+    a = a + 1
+    if a == len(l):
+        a = 0
+    d = 0
+    for f in range(len(l)):
+        if l[f] == 0:
+            d = d + 1
+        if len(l) - d < 3:
+            for c in range(len(l)):
+                if l[c] != 0:
+                    print(l[c])
+                    break
 
 
 
