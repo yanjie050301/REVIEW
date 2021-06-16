@@ -145,14 +145,21 @@ for c in range(len(l)):
 ****************三十五、写一个函数，求一个字符串的长度，在main函数中输入字符串，并输出其长度。
 思想：
 """
-
+"""
 def long(s):
     return f"该字符串长度为:{len(s)}"
 if __name__ == '__main__':
     s = input("输入一个字符串:")
     print(long(s))
-
-
-
+"""
+"""
+****************三十六、创建一个链表。
+思想：
+"""
+l = []
+for i in range(5):
+    a = input("input:")
+    l.append(a)
+print(l)
 
 
