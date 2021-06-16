@@ -20,8 +20,8 @@ class MyTest(unittest.TestCase):
         cls.driver = d.startUp()
     def setUp(self)-> None:
         pass
-    def test(self):
-        self.assertEqual(1,1)
+    # def test(self):
+    #     self.assertEqual(1,1)
     def tearDown(self)-> None:
         pass
     @classmethod

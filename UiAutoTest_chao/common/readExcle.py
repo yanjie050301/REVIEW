@@ -40,7 +40,7 @@ class ReadExcle():
                 continue
 if __name__ == '__main__':
     r =ReadExcle()
-    print(int(r.read("LittleMessageTest","testLittleMessagNormal")))
+    print(int(r.read("LittleMessageTest","test_samll_message_normal")))
 
 
 
