@@ -51,16 +51,26 @@ class ReadConfif():
 
     def readserver(self, option="all"):
         try:
-            logger
+
             if option == "all":
                 return self.cf.items("server")
             else:
                 return self.cf.get("server", option)
         except Exception as msg:
             print(msg)
+
+    def reademail(self, option="all"):
+        try:
+
+            if option == "all":
+                return self.cf.items("email")
+            else:
+                return self.cf.get("email", option)
+        except Exception as msg:
+            print(msg)
 if __name__ == '__main__':
     r = ReadConfif()
-    print(r.readserver())
+    print(r.reademail())
 
 
 
