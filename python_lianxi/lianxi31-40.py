@@ -156,10 +156,43 @@ if __name__ == '__main__':
 ****************三十六、创建一个链表。
 思想：
 """
+"""
 l = []
 for i in range(5):
     a = input("input:")
     l.append(a)
 print(l)
+"""
+"""
+****************三十七、题目：编写一个函数，输入n为偶数时，调用函数求1/2+1/4+...+1/n,当输入n为奇数时，调用函数1/1+1/3+...+1/n
+思想：
+"""
+def oushu(num):
+    i = int(num/2)
+    sum = 0
+    for n in range(1,i+1):
+        sum = 1/(n*2) +sum
+    return sum
+def jishu(num):
+    i = int(num/2+1)
+    sum = 0
+    for n in range(1,i+1):
+        sum = 1/(n*2-1)+sum
+    return sum
+def count(num):
+    if num%2==0:
+        sum = oushu(num)
+        return f"您输入的数字为偶数，和为：{sum}"
+    if num%2==1:
+        sum = jishu(num)
+        return f"您输入的数字为奇数，和为：{sum}"
+num = int(input("请输入一个数："))
+print(count(num))
+
+
+
+
+
+
 
 
