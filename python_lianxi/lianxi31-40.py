@@ -183,11 +183,26 @@ def count(num):
     if num%2==0:
         sum = oushu(num)
         return f"您输入的数字为偶数，和为：{sum}"
-    if num%2==1:
+    else:
         sum = jishu(num)
         return f"您输入的数字为奇数，和为：{sum}"
-num = int(input("请输入一个数："))
-print(count(num))
+if __name__ == '__main__':
+    def a():
+        try:
+            num = int(input("请输入一个正整数："))
+        except Exception as msg:
+            if msg != "":
+                a()
+        else:
+            if num >0:
+                print(count(num))
+            else:
+                a()
+    a()
+
+
+
+
 
 
 
