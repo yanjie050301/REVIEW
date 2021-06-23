@@ -12,7 +12,7 @@
 import configparser
 import os
 from UiAutoTest_chao.common.log import logger
-class ReadConfif():
+class ReadConfig():
     def __init__(self):
         self.cf = configparser.ConfigParser()
         path = os.path.dirname(os.path.dirname(__file__))+"//config.ini"

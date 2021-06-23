@@ -14,10 +14,10 @@ import time,os
 from email.header import Header
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from readconfig import ReadConfif
+from UiAutoTest_chao.common.readconfig import ReadConfig
 class CinfigEmail():
     def __init__(self):
-        c = ReadConfif()
+        c = ReadConfig()
         # 1.配置邮件属性
         self.sender = c.reademail("sender")  # 发件人邮箱
         self.receiver = c.reademail("receiver")  # 接收人邮箱

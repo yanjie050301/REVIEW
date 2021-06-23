@@ -9,19 +9,19 @@
     2.启动APP
     3.
 """
-from UiAutoTest_chao.common.readconfig import ReadConfif
+from UiAutoTest_chao.common.readconfig import ReadConfig
 from appium import webdriver
 import time
 class Driver():
     def __init__(self):
-        self.r = ReadConfif()
+        self.r = ReadConfig()
     def startUp(self):
         desired_caps = {
           "platformName": self.r.readnews("platformName"),
-          # "platformVersion": self.r.readvivo("platformVersion"),
-          # "deviceName": self.r.readvivo("deviceName"),
-          "platformVersion": self.r.readxiaomi9("platformVersion"),
-          "deviceName": self.r.readxiaomi9("deviceName"),
+          "platformVersion": self.r.readvivo("platformVersion"),
+          "deviceName": self.r.readvivo("deviceName"),
+          # "platformVersion": self.r.readxiaomi9("platformVersion"),
+          # "deviceName": self.r.readxiaomi9("deviceName"),
           "appPackage": self.r.readnews("appPackage"),
           "appActivity": self.r.readnews("appActivity"),
           "skipServerInstallation": True,

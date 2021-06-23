@@ -10,40 +10,25 @@
     3.
 """
 
-import unittest,time
-from selenium.webdriver.common.by import By
-from UiAutoTest_chao.common.driver import Driver
+import unittest
 from UiAutoTest_chao.common.myTest import MyTest
 from UiAutoTest_chao.common.readExcle import ReadExcle
 from UiAutoTest_chao.common.public import Public
+from UiAutoTest_chao.PO.homePage import HomePage
+
 r = ReadExcle()
 class LittleMessageTest(MyTest):
     """
-    发布微头条用例
+    发布微头条用例--正常发布
     """
     def test_samll_message_normal(self):
-        p = Public(self.driver)
-        p.getsize()
+        # p = Public(self.driver)
+        # p.getsize()
         class_name = self.__class__.__name__    #获取类名
         method_name = self._testMethodName     #获取方法名
-        # print("class_name:",class_name)
-        # print("method_name:",method_name)
-        data = r.read(class_name,method_name)
-        # d = Driver()
-        # driver = d.startUp()
-        # # 点击发布按钮
-        # self.driver.find_element_by_id("com.ss.android.article.news:id/d10").click()
-        # time.sleep(2)
-        # # # 点击微头条
-        # self.driver.find_element_by_id("com.ss.android.article.news:id/eor").click()
-        # time.sleep(5)
-        # # # 输入内容
-        # self.driver.find_element_by_id("com.ss.android.article.news:id/an5").send_keys(data)
-        # time.sleep(5)
-        # # # 点击发布按钮
-        # self.driver.find_element_by_id("com.ss.android.article.news:id/dxl").click()
-        # time.sleep(5)
-
+        data = int(r.read(class_name,method_name))
+        hp = HomePage(self.driver)      #发布微头条
+        hp.publish_article(data)
         self.assertEquals(1,1)
     def test_samll_message_min(self):
         self.assertEquals(1, 1)

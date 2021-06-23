@@ -1,9 +1,14 @@
 """
 
 """
+
+
 from appium import webdriver
 import time
 
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 desired_caps = {
   "platformName": "Android",
   "platformVersion": "9",
@@ -33,17 +38,19 @@ time.sleep(10)
 # public.swipeup(driver)
 # print("向上滑动")
 #点击发布按钮
-driver.find_element_by_id("com.ss.android.article.news:id/d10").click()
+# driver.find_element(By.ID,"com.ss.android.article.news:id/d10").click()
+driver.find_element_by_id("com.ss.android.article.news:id/d28").click()
+
 time.sleep(2)
-#点击微头条
-driver.find_element_by_id("com.ss.android.article.news:id/eor").click()
-time.sleep(5)
-#输入内容
-driver.find_element_by_id("com.ss.android.article.news:id/an5").send_keys("123456")
-time.sleep(5)
-#点击发布按钮
-driver.find_element_by_id("com.ss.android.article.news:id/dxl").click()
-time.sleep(5)
+# #点击微头条
+# driver.find_element_by_id("com.ss.android.article.news:id/eor").click()
+# time.sleep(5)
+# #输入内容
+# driver.find_element_by_id("com.ss.android.article.news:id/an5").send_keys("123456")
+# time.sleep(5)
+# #点击发布按钮
+# driver.find_element_by_id("com.ss.android.article.news:id/dxl").click()
+# time.sleep(5)
 
 driver.quit()
 

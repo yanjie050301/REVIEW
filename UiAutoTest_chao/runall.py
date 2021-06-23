@@ -16,6 +16,7 @@
 """
 import unittest,os,time
 from HTMLTestRunner import HTMLTestRunner
+from UiAutoTest_chao.common.configEmail import CinfigEmail
 class Runall():
     #查找测试用例
     def suite(self):
@@ -23,6 +24,7 @@ class Runall():
         suite = unittest.defaultTestLoader.discover(start_dir=dir_path,pattern="*test.py")
         return suite
     def run(self):
+        """筛选报告"""
         report_path = os.path.dirname(__file__)+"//testReport"
         report_list = os.listdir(report_path)
         num = len(report_list)
@@ -37,6 +39,8 @@ class Runall():
             #生成测试结果-报告
             runner = HTMLTestRunner( stream= f,title="appium测试报告",description="测试情况")
             runner.run(suite)
+        ce = CinfigEmail()   #发送邮件
+        ce.sendemail()
 if __name__ == '__main__':
     r = Runall()
     r.run()
