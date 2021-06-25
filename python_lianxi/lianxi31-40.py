@@ -167,6 +167,7 @@ print(l)
 ****************三十七、题目：编写一个函数，输入n为偶数时，调用函数求1/2+1/4+...+1/n,当输入n为奇数时，调用函数1/1+1/3+...+1/n
 思想：
 """
+"""
 def oushu(num):
     i = int(num/2)
     sum = 0
@@ -186,22 +187,45 @@ def count(num):
     else:
         sum = jishu(num)
         return f"您输入的数字为奇数，和为：{sum}"
-if __name__ == '__main__':
-    def a():
-        try:
-            num = int(input("请输入一个正整数："))
-        except Exception as msg:
-            if msg != "":
-                a()
+def a():
+    try:
+        num = int(input("请输入一个正整数："))
+    except Exception as msg:
+        if msg != "":
+            a()
+    else:
+        if num >0:
+            print(count(num))
         else:
-            if num >0:
-                print(count(num))
-            else:
-                a()
-    a()
-
-
-
+            a()
+if __name__ == '__main__':
+     a()
+"""
+"""
+****************三十八、海滩上有一堆桃子，五只猴子来分。第一只猴子把这堆桃子平均分为五份，多了一个，这只猴子把多的一个扔入海中，拿走了一份。
+第二只猴子把剩下的桃子又平均分成五份，又多了一个，它同样把多的一个扔入海中，拿走了一份，第三、第四、第五只猴子都是这样做的，问海滩上原来最少有多少个桃子？
+思想：
+"""
+# tz = 1   #最后五份桃子，每份只有一个
+# m = 5
+# sum = 1  #桃子总数
+# while m >0:
+#     sum = sum*5+1
+#     m = m-1
+# print(sum)
+i = 0
+j = 1
+x = 0
+while (i < 5) :
+    x = 4 * j
+    for i in range(0,5) :
+        if(x%4 != 0) :
+            break
+        else :
+            i += 1
+        x = (x/4) * 5 +1
+    j += 1
+print(x)
 
 
 

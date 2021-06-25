@@ -38,10 +38,11 @@ time.sleep(10)
 # public.swipeup(driver)
 # print("向上滑动")
 #点击发布按钮
-# driver.find_element(By.ID,"com.ss.android.article.news:id/d10").click()
-driver.find_element_by_id("com.ss.android.article.news:id/d28").click()
-
-time.sleep(2)
+# fabu =driver.find_element(By.ID,"com.ss.android.article.news:id/cxe")
+# fabu.click()
+# fabu = driver.find_element_by_id("com.ss.android.article.news:id/cxe")
+# print("ssssss",fabu.text)
+# time.sleep(2)
 # #点击微头条
 # driver.find_element_by_id("com.ss.android.article.news:id/eor").click()
 # time.sleep(5)
@@ -51,9 +52,22 @@ time.sleep(2)
 # #点击发布按钮
 # driver.find_element_by_id("com.ss.android.article.news:id/dxl").click()
 # time.sleep(5)
+my = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.TabHost/android.widget.FrameLayout[6]/android.widget.TabWidget/android.widget.RelativeLayout[4]/android.widget.TextView"
+fr = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.TabHost/android.widget.FrameLayout[6]/android.widget.TabWidget/android.widget.RelativeLayout[1]/android.widget.ImageView"
+driver.find_element(By.XPATH,my).click()
+time.sleep(3)
+# t = driver.find_element(By.ID,"com.ss.android.article.news:id/f3s")
+# print("wwwwww0",t.text)
+driver.find_element(By.XPATH,fr).click()
+time.sleep(3)
+
+
+
+
+
 
 driver.quit()
-
+print("app退出成功")
 
 
 

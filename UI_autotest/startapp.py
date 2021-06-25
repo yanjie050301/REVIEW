@@ -8,8 +8,8 @@ from appium import webdriver
 from androguard.core.bytecodes.apk import APK
 import time
 # 获取apk的包名和activity
-"""
-a = APK("F:\\test\\selenium\\app-simulation_-CFAE_-debug.apk",False,"r")
+
+a = APK("C:\\Users\\Administrator\\Desktop\\app-simulation_-CFAE_-debug (1).apk",False,"r")
 print(a.get_package())
 print(a.get_main_activity())
 """
@@ -39,6 +39,7 @@ desired_caps = {
 driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
 time.sleep(10)
 """
+"""
 #同意用户协议
 driver.find_element_by_id("com.lchr.diaoyu:id/stv_agree").click()
 time.sleep(2)
@@ -54,6 +55,7 @@ time.sleep(2)
 #获取位置权限
 driver.find_element_by_id("com.lchr.diaoyu:id/rtv_open").click()
 time.sleep(2)
+"""
 """
 #点击我的icon
 driver.find_element_by_id("com.lchr.diaoyu:id/btn_tab_mine").click()
@@ -80,7 +82,7 @@ time.sleep(10)
 driver.quit()
 
 
-
+"""
 
 
 
