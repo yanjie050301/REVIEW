@@ -230,10 +230,26 @@ for s in range(10,100):
     if len(str(s*809))==4 and len(str(s*8))==2 and len(str(s*9))==3 and 809*s==800*s+9*s:
         print(f"??为{s},809*??={809*s}")
 """
-
-
-
-
+"""
+****************四十、输入一个奇数，然后判断最少几个 9 除于该数的结果为整数
+思想：999999 / 13 = 76923。
+"""
+"""
+def num(num):
+    num = int(num)
+    if num%2==0:
+        print("请输入奇数!")
+    else:
+        n="9"
+        m=9
+        while True:
+            if m%num == 0:
+                print(m)
+                break
+            m = str(m)+n
+            m = int(m)
+num("j")
+"""
 
 
 
