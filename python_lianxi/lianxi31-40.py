@@ -248,7 +248,8 @@ def num(num):
                 break
             m = str(m)+n
             m = int(m)
-num("j")
+j = input("请输入一个奇数：")
+num(j)
 """
 
 
