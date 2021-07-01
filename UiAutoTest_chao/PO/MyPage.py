@@ -8,13 +8,13 @@ import time
 class MyPage(BasePage):
     #类属性
     my_batton = (By.XPATH,"/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.TabHost/android.widget.FrameLayout[6]/android.widget.TabWidget/android.widget.RelativeLayout[4]/android.widget.TextView")
-    my_message = (By.ID,"com.ss.android.article.news:id/f3s")
+    my_message = (By.ID,"com.ss.android.article.news:id/f9f")
     def __init__(self,driver):
         self.driver = driver
 
-    def clickmyButton(self):
+    def clickmyButton(self):    #点击我的按钮
         self.by_find_element(*self.my_batton).click()
-    def get_message_text(self):
+    def get_message_text(self):   #我的页面头条的数量
         self.clickmyButton()
         t = self.by_find_element(*self.my_message)
         return t.text

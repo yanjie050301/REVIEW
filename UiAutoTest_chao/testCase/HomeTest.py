@@ -36,12 +36,14 @@ class LittleMessageTest(MyTest):
         new = int(mp.get_message_text())     #获取发布成功后微头条数量
         print(f"发布微头条hou头条的数量{new}")
         self.assertEquals(new,old+1)
+    """
     def test_samll_message_min(self):
         self.assertEquals(1, 1)
     def test_samll_message_max(self):
         self.assertEquals(1, 1)
     def test_samll_message_null(self):
         self.assertEquals(1, 1)
+    """
 if __name__ == '__main__':
     unittest.main()
 

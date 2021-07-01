@@ -52,13 +52,14 @@ time.sleep(10)
 # #点击发布按钮
 # driver.find_element_by_id("com.ss.android.article.news:id/dxl").click()
 # time.sleep(5)
-my = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.TabHost/android.widget.FrameLayout[6]/android.widget.TabWidget/android.widget.RelativeLayout[4]/android.widget.TextView"
-fr = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.TabHost/android.widget.FrameLayout[6]/android.widget.TabWidget/android.widget.RelativeLayout[1]/android.widget.ImageView"
-driver.find_element(By.XPATH,my).click()
+my = "//*[@text=‘我的’]"
+m  = "//[@resource-id='android:id/tabs']/android.widget.RelativeLayout[4]"
+driver.find_element(By.XPATH,m).click()
 time.sleep(3)
 # t = driver.find_element(By.ID,"com.ss.android.article.news:id/f3s")
 # print("wwwwww0",t.text)
-driver.find_element(By.XPATH,fr).click()
+a = "com.ss.android.article.news:id/c0p"
+driver.find_element(By.ID,a).click()
 time.sleep(3)
 
 

@@ -7,12 +7,12 @@ from UiAutoTest_chao.PO.basePage import BasePage
 from UiAutoTest_chao.common.readExcle import ReadExcle
 class HomePage(BasePage):
     #定义页面类属性，就是元素属性
-    publish_button = (By.ID,"com.ss.android.article.news:id/d28")   #发布按钮
-    little_message = (By.ID,"com.ss.android.article.news:id/ctm")   #微头条按钮
-    send_text = (By.ID,"com.ss.android.article.news:id/anz")      #输入框
-    submit_button = (By.ID,"com.ss.android.article.news:id/dz9")    #提交信息发布按钮
+    publish_button = (By.ID,"com.ss.android.article.news:id/d20")   #发布按钮
+    little_message = (By.ID,"com.ss.android.article.news:id/cte")   #微头条按钮
+    send_text = (By.ID,"com.ss.android.article.news:id/ao7")      #输入框
+    submit_button = (By.ID,"com.ss.android.article.news:id/dxy")    #提交信息发布按钮
     # 首页按钮
-    fristpage = (By.XPATH,"/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.TabHost/android.widget.FrameLayout[6]/android.widget.TabWidget/android.widget.RelativeLayout[1]/android.widget.TextView")
+    fristpage = (By.ID,"com.ss.android.article.news:id/c0p")
     def __init__(self,driver):
         self.driver = driver
     def clickFristBatton(self):
