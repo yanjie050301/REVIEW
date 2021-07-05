@@ -14,6 +14,7 @@
 在传递过程中是加密的，加密规则如下：每位数字都加上5,然后用和除以10的余数代替该数字，再将第一位和第四位交换，第二位和第三位交换。
 思想：
 """
+"""
 def num(num):
     li = []
     num = str(num)
@@ -44,3 +45,61 @@ def num(num):
 if __name__ == '__main__':
     number = input("请输入4位整数：")
     num(number)
+"""
+"""
+****************四十二、从键盘输入一些字符，逐个把它们写到磁盘文件上，直到输入一个 # 为止
+思想：
+"""
+"""第一种方法"""
+"""
+name = input("请输入文件名：")
+f = open(name+".txt","w",encoding="utf-8")
+while True:
+    s = input("请输入要写入磁盘的字符：")
+    if s == "#":
+        print("退出磁盘")
+        break
+    f.write(s)
+f.close()
+"""
+"""第二种方法"""
+"""
+name = input("请输入文件名：")
+with open(name+".txt","w",encoding="utf-8") as f:
+    while True:
+        s = input("请输入要写入磁盘的字符：")
+        if s == "#":
+            print("退出磁盘")
+            break
+        f.write(s)
+"""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
