@@ -2,10 +2,11 @@
 
 import time
 from selenium import webdriver
+from seleniumUI.common.Public import public
 def StartUp():
     driver = webdriver.Chrome()
     driver.maximize_window()
-    time.sleep(5)
+    time.sleep(3)
     driver.get("https://www.wanandroid.com/")
     time.sleep(3)
     """
@@ -40,5 +41,24 @@ def register():
         print("注册成功")
 
     driver.quit()
+
+
+def login():
+    driver = StartUp()
+    p = public()
+    driver.p
+    driver.find_element_by_link_text("登录").click()
+    time.sleep(2)
+    driver.find_element_by_name("username").send_keys("yanjie000")
+    time.sleep(2)
+    driver.find_element_by_name("password").send_keys("123123")
+    time.sleep(2)
+    driver.find_element_by_xpath("/html/body/div[1]/div[3]/div/p[3]/span").click()
+    time.sleep(5)
+    driver.quit()
+
+
+
+
 if __name__ == '__main__':
-    register()
+    login()

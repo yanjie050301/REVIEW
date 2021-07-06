@@ -15,7 +15,7 @@ from seleniumUI.common.Log import l
 class ReadConfig():
     def __init__(self):
         p = public()
-        filedir = p.getdir() + "//config.ini"
+        filedir = p.getdir() + "//Config//config.ini"
         self.c = configparser.ConfigParser()
         self.c.read(filedir,encoding="utf-8")
     def geturl(self,opt = "all"):
@@ -52,7 +52,7 @@ class ReadConfig():
             l.info(msg)
         finally:
             l.info(f"已成功读取email下的{opt}的值")
-    def getui(self,opt = "all"):
+    def getgui(self,opt = "all"):
         """
         section为email时，获取的相关信息
         :param opt: 根据传入的option的信息，获取option的值
@@ -60,15 +60,15 @@ class ReadConfig():
         """
         try:
             if opt== "all":
-                ovalue = self.c.items("UI")
+                ovalue = self.c.items("GUI")
                 return ovalue
             else:
-                ovalue = self.c.get("UI",opt)
+                ovalue = self.c.get("GUI",opt)
                 return ovalue
         except Exception as msg:
             l.info(msg)
         finally:
-            l.info(f"已成功读取UI下的{opt}的值")
+            l.info(f"已成功读取GUI下的{opt}的值")
 if __name__ == '__main__':
     rc = ReadConfig()
     print(rc.getui())

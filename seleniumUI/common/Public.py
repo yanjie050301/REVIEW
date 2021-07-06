@@ -10,6 +10,9 @@
     3.
 """
 import os
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from seleniumUI.common.Log import l
 class public():
     def getdir(self):
         """
@@ -18,11 +21,20 @@ class public():
         """
         dir = os.path.dirname(os.path.dirname(__file__))
         return dir
-
-
+    def find_element_wait(self,driver,*item):
+        try:
+            element = WebDriverWait(driver,30).until(EC.visibility_of_element_located(item))
+            return element
+        except Exception as msg:
+            l.info(msg)
 if __name__ == '__main__':
+    from seleniumUI.common.BaseDriver import Startup
+    from selenium.webdriver.common.by import By
+    driver = Startup()
     p = public()
-    print(p.getdir())
+    item = (By.LINK_TEXT,"登录")
+    print(p.find_element_wait(driver,*item))
+
 
 
 

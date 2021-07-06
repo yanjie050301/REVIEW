@@ -11,7 +11,7 @@
 """
 from selenium import webdriver
 from seleniumUI.common.ReadConfig import ReadConfig
-from seleniumUI.common.ReadConfig import ReadConfig
+from seleniumUI.common.Log import l
 import time
 rc = ReadConfig()
 def Startup():
@@ -19,9 +19,32 @@ def Startup():
    初始化driver， 并打开百度网址
     :return: 返回driver对象
     """
-    driver = webdriver.Chrome()
+    wui = rc.getgui("gui")
+    option = webdriver.ChromeOptions()
+    if wui == "yes" or wui == "Yes":
+        l.info("浏览器有界面运行")
+        """
+        方法针对V78版本及以上有效
+        解决Chrome正在受到自动软件的控制的办法
+        """
+        option.add_experimental_option("useAutomationExtension",False)
+        option.add_experimental_option("excludeSwitches",["enable-automation"])
+        option.add_argument("--start-maximized") #窗口最大化
+        driver = webdriver.Chrome(chrome_options=option)
+    else:
+        l.info("浏览器无界面运行")
+        option.add_argument("headless")  # 设置无浏览器界面
+        """
+                方法针对V78版本及以上有效
+                解决Chrome正在受到自动软件的控制的办法
+        """
+        option.add_experimental_option("useAutomationExtension", False)
+        option.add_experimental_option("excludeSwitches", ["enable-automation"])
+        option.add_argument("--start-maximized")  # 窗口最大化
+        driver = webdriver.Chrome(chrome_options=option)
     url = rc.geturl("url")
     driver.get(url)
+    l.info(f"成功打开{url}页面")
     return driver
 if __name__ == '__main__':
     d = Startup()
