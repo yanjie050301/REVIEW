@@ -46,7 +46,6 @@ def register():
 def login():
     driver = StartUp()
     p = public()
-    driver.p
     driver.find_element_by_link_text("登录").click()
     time.sleep(2)
     driver.find_element_by_name("username").send_keys("yanjie000")
@@ -54,6 +53,7 @@ def login():
     driver.find_element_by_name("password").send_keys("123123")
     time.sleep(2)
     driver.find_element_by_xpath("/html/body/div[1]/div[3]/div/p[3]/span").click()
+    print("登录成功！！！")
     time.sleep(5)
     driver.quit()
 
