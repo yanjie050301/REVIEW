@@ -77,7 +77,7 @@ with open(name+".txt","w",encoding="utf-8") as f:
 ****************四十三、从键盘输入一个字符串，将小写字母全部转换成大写字母，然后输出到一个磁盘文件"test"中保存。
 思想：
 """
-
+"""
 def sinput():
     s = input("请输入一个字符串：")
     a = s.upper()
@@ -88,10 +88,28 @@ def sinput():
 
 if __name__ == '__main__':
    sinput()
-
-
-
-
+"""
+"""
+****************四十四、有两个磁盘文件A和B,各存放一行字母,要求把这两个文件中的信息合并(按字母顺序排列), 输出到一个新文件C中。
+思想：
+"""
+#读取A.txt文件
+f = open("A.txt","r",encoding="utf-8")
+a = f.read()
+#读取B.txt文件
+f = open("B.txt","r",encoding="utf-8")
+b = f.read()
+c = a+b
+l = []
+#将拼接的字符串依次放入列表中
+for i in c:
+    l.append(i)
+#列表排序默认从小到大，从大到小参数为reverse=True
+l.sort()
+#遍历列表，写入文件C.txt中
+with open("C.txt","w",encoding="utf-8") as f:
+    for n in l:
+        f.write(n)
 
 
 
