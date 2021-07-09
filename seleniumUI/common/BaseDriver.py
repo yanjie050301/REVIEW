@@ -24,9 +24,21 @@ def Startup():
     if wui == "yes" or wui == "Yes":
         l.info("浏览器有界面运行")
         """
-        方法针对V78版本及以上有效
-        解决Chrome正在受到自动软件的控制的办法
+        保存浏览器登录信息
         """
+        option.add_argument(r"C:\Users\Administrator\AppData\Local\Google\Chrome\User Data")
+        """
+        禁用浏览器记住密码弹窗
+        """
+        prefs = {"": ""}
+        prefs["credentials_enable_service"] = False
+        prefs[
+            "profile.password_manager_enabled"] = False
+        option.add_experimental_option("prefs", prefs)
+        """
+               方法针对V78版本及以上有效
+               解决Chrome正在受到自动软件的控制的办法
+               """
         option.add_experimental_option("useAutomationExtension",False)
         option.add_experimental_option("excludeSwitches",["enable-automation"])
         option.add_argument("--start-maximized") #窗口最大化
@@ -35,9 +47,21 @@ def Startup():
         l.info("浏览器无界面运行")
         option.add_argument("headless")  # 设置无浏览器界面
         """
-                方法针对V78版本及以上有效
-                解决Chrome正在受到自动软件的控制的办法
+                保存浏览器登录信息
+                """
+        option.add_argument(r"C:\Users\Administrator\AppData\Local\Google\Chrome\User Data")
         """
+        禁用浏览器记住密码弹窗
+        """
+        prefs = {"": ""}
+        prefs["credentials_enable_service"] = False
+        prefs[
+            "profile.password_manager_enabled"] = False
+        option.add_experimental_option("prefs", prefs)
+        """
+               方法针对V78版本及以上有效
+               解决Chrome正在受到自动软件的控制的办法
+               """
         option.add_experimental_option("useAutomationExtension", False)
         option.add_experimental_option("excludeSwitches", ["enable-automation"])
         option.add_argument("--start-maximized")  # 窗口最大化

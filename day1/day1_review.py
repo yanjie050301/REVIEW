@@ -1,6 +1,6 @@
 review1 = "    accumulate over A long period     "
 # 1.查找某字符，结合范围，两种方法，述说不同点
-# print(review1.find("A"))
+print("55555555555",review1.find("M"))
 # print(review1.index("b"))    #index查找没有符合的字符会报错，find不会报错
 # 2.统计某字符在字符串中出现的次数，结合范围，
 # print(review1.count("a"))
