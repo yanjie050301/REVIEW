@@ -1,20 +1,18 @@
 
 """
 ************一、有四个数字：1、2、3、4，能组成多少个互不相同且无重复数字的三位数？各是多少？
-
-li = []
-for i in range(1,5):
-    i = str(i)
-    for n in range(1,5):
-        n = str(n)
-        for m in range(1,5):
-            m = str(m)
-            if i==n or i==m or n==m:
-                continue
-            num = i+n+m
-            li.append(num)
-print(li)
 """
+for i in range(1,5):
+    for n in range(1,5):
+        for m in range(1,5):
+            if i !=n and n!=m and i!=m:
+                print(i,n,m)
+
+
+
+
+
+
 """
 *****************二、
 题目：企业发放的奖金根据利润提成。利润(I)低于或等于10万元时，奖金可提10%；
@@ -200,6 +198,7 @@ sp()
 """
 ****************九、暂停一秒输出，并格式化当前时间。
 """
+"""
 import time
 def T():
     tm = time.strftime("%Y:%m:%d:%H:%M:%S",time.localtime(time.time()))
@@ -208,7 +207,7 @@ def T():
     tm1 = time.strftime("%Y:%m:%d:%H:%M:%S", time.localtime(time.time()))
     print(tm1)
 T()
-
+"""
 
 
 
