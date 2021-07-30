@@ -2,6 +2,7 @@
 """
 ************一、有四个数字：1、2、3、4，能组成多少个互不相同且无重复数字的三位数？各是多少？
 """
+"""
 for i in range(1,5):
     for n in range(1,5):
         for m in range(1,5):
@@ -10,7 +11,7 @@ for i in range(1,5):
 
 
 
-
+"""
 
 
 """
@@ -118,6 +119,38 @@ if __name__ == '__main__':
     a.year1()
 
 """
+y = 2000
+m = 12
+d = 31
+def Year(y,m,d):
+    sum =0
+    for n in range(1,m):#判断月份是31天还是30天
+        if n in [1,3,5,7,8,10,12]:
+            month = 31
+        elif n in [4,6,9,11]:
+            month = 30
+        else:
+            month = 0
+        if n ==2:  #判断年份是平年还是闰年，得2月份是多少天
+            if y % 4 == 0:
+                eryue = 29
+            else:
+                eryue = 28
+        sum = sum + month   #累加整月的天数
+    sum = sum + eryue+d   #整月的天数+二月的天数+当月的天数
+    return sum
+if __name__ == '__main__':
+    Year()
+
+
+
+
+
+
+
+
+
+
 """
 ****************四、输入三个整数x,y,z，请把这三个数由小到大输出。
 """
