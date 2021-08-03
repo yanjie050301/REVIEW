@@ -3,70 +3,82 @@
  @File  : excle_sum.py
  @Author: yanjie
  @Date  : 2021/7/30 0030
- @功能描述  :
+ @功能描述  :给一个和值，要求找出表格中哪几个数相加的
  @实现步骤：
     1.
     2.
     3.
 """
-"""
+
 import xlrd
-e = xlrd.open_workbook("汇总.xls")
-sh = e.sheet_by_index(0)
-now = sh.nrows
-# num = sh.cell_value(1,2)
-# nu=sh.cell_value(2,2)
-li = []
-sets = set()
-for n in range(1,now):
-    num = sh.cell_value(n,2)
-    li.append(num)
-# print(li)
-"""
-li = [2.3,5,2,3.6,5.6,8,7.9]
-sum = float(17.3)
-for l in range(0,len(li)):
-    a = float(li[l])
-    for m in range(l+1,len(li)):
-        b = float(li[m])
-        if a + b == sum:
-            print(a, "eeee", b)
-            break
-for q in range(0,len(li)):
-    c = float(li[q])
-    for w in range(q+1,len(li)):
-        d = float(li[w])
-        for r in range(w+1,len(li)):
-            e = float(li[r])
-            if c + d + e == sum:
-                print(c, "eeee", d, "eeee", e)
-                break
-for q in range(0,len(li)):
-    c = float(li[q])
-    for w in range(q+1,len(li)):
-        d = float(li[w])
-        for r in range(w+1,len(li)):
-            e = float(li[r])
-            for t in range(r+1,len(li)):
-                f = float(li[t])
-                print(type(c + d + e + f))
-            if c + d + e + f == sum:
-                print(c, "eeee", d, "eeee", e, "eeee", f)
-                break
-                # li = [2.3, 5, 2, 3.6, 5.6, 8, 7.9]
-#     c = float(c)
-#     for d in li:
-#         d = float(d)
-#         for e in li:
-#             e = float(e)
-#             for f in li:
-#                 f = float(f)
-#                 for g in li:
-#                     g = float(g)
-#                     if c + d + e + f + g == sum:
-#                         sets.add(e)
-#                         sets.add(d)
-#                         sets.add(c)
-#                         sets.add(f)
-#                         sets.add(g)
-# print(sets)
+class Calculate():
+    def __init__(self,file):
+
+        e = xlrd.open_workbook(file)
+        self.sh = e.sheet_by_index(0)
+        self.nrow = self.sh.nrows
+        self.li = []
+        sum = float(1147.7)
+        for n in range(1,self.nrow):
+            num = self.sh.cell_value(n,2)
+            self.li.append(num)
+    def two_num(self,sum):
+        for l in range(0,len(self.li)):
+            a = float(self.li[l])
+            for m in range(l+1,len(self.li)):
+                b = float(self.li[m])
+                if round(a + b,2) == sum:
+                    return f"您输入的和值为{sum}，加数为{a}和{b}"
+                    break
+    def three_num(self,sum):
+        for q in range(0,len(self.li)):
+            c = float(self.li[q])
+            for w in range(q+1,len(self.li)):
+                d = float(self.li[w])
+                for r in range(w+1,len(self.li)):
+                    e = float(self.li[r])
+                    if round(c + d + e,2) == sum:
+                        return f"您输入的和值为{sum}，加数为{c}、{d}、{e}"
+                        break
+    def four_num(self,sum):
+        for q in range(0,len(self.li)):
+            c = float(self.li[q])
+            for w in range(q+1,len(self.li)):
+                d = float(self.li[w])
+                for r in range(w+1,len(self.li)):
+                    e = float(self.li[r])
+                    for t in range(r+1,len(self.li)):
+                        f = float(self.li[t])
+                        if round(c + d + e + f,2) == sum:
+                            return f"您输入的和值为{sum}，加数为{c}、{d}、{e}、{f}"
+                            break
+    def five_num(self,sum):
+        for q in range(0, len(self.li)):
+            c = float(self.li[q])
+            for w in range(q + 1,len(self.li)):
+                d = float(self.li[w])
+                for r in range(w + 1, len(self.li)):
+                    e = float(self.li[r])
+                    for t in range(r + 1, len(self.li)):
+                        f = float(self.li[t])
+                        for y in range(t + 1, len(self.li)):
+                            g = float(self.li[y])
+                            if round(c + d + e + f + g,2) == sum:
+                                return f"您输入的和值为{sum}，加数为{c}、{d}、{e}、{f}、{g}"
+                                break
+
+    def count(self,sum):
+        if self.two_num(sum) is not None:
+            return self.two_num(sum)
+        elif self.three_num(sum) is not None:
+            return self.three_num(sum)
+        elif self.four_num(sum) is not None:
+            return self.four_num(sum)
+        elif self.five_num(sum) is not None:
+            return self.five_num(sum)
+        else:
+            return f"您输入的和值为{sum}，无加数"
+if __name__ == '__main__':
+    c = Calculate("汇总.xls")
+    print(c.count(101.8))
+    # print(c.count(578))
