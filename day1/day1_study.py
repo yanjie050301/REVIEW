@@ -110,7 +110,7 @@
 #         print("下课吧")
 #         n = n+1
 # while_lianxi()
-# def Continue():    #Ccontinue练习
+# def Continue():    #continue练习
 #     n = 1
 #     while n<6:
 #         if n ==3:
