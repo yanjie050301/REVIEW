@@ -85,26 +85,50 @@ dict = {"a":"12",'b': 23,"c":"sdsd","d":888}
 # if "a" in dict.keys():
 #     print(f'a:{dict["a"]}')
 #查找key为t的键值对是否在字典dict中，若没有默认返回000并打印
-if "t" not in dict.keys():
-    print(000)
+# if "t" not in dict.keys():
+#     print(000)
+# c = dict.get("t","000")
+# print(c)
 #取字典中所有的key并打印
+# print(dict.keys())
 #取字典中所有的values并打印
+# print(dict.values())
 #取字典中所有的键值对并打印
+# print(dict.items())
 #遍历字典中所有的key并打印
+# for s in dict.keys():
+#     print(s)
 #遍历字典中所有的values并打印
+# for a in dict.values():
+#     print(a)
 # 遍历字典中所有的元素并打印
+# for a,b in dict.items():
+#     print(a,"=",b)
 #遍历字典中所有的键值对并打印
-print(dict)
+# for a in dict.items():
+#     print(a)
+# print(dict)
 
 
 s1 = {10,20,30,"ddd",40,50,60}
 #将56添加到集合s1中并打印
-#将[44,"ssd",0000]添加到集合s1中
-#删除集合s1
-#删除集合s1中的ddd数据
-#删除集合s1中ccc数据
-#随机删除集合s1中的数据，并打印删除数据
-#判断565是否在集合中
+# s1.add(56)
 
+#将[44,"ssd",0000]添加到集合s1中
+# s1.update([44,"ssd",0000])
+#删除集合s1
+# del s1
+#删除集合s1中的ddd数据
+# s1.remove("ddd")
+#删除集合s1中ccc数据
+# s1.remove("ccc")     #没有元素则报错
+# s1.discard("ccc")     #没有元素不报错
+#随机删除集合s1中的数据，并打印删除数据
+# a = s1.pop()
+# print(a)
+#判断565是否在集合中
+a = 456 in s1
+print(a)
+print(s1)
 
 

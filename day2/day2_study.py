@@ -101,12 +101,13 @@ c["e"] = 55
 # print(list)
 
 # list = [i for i in range(10) if i%2==1]
+
 # print(list)
 
 #字典推导式
-# list = ["A","B","C"]
-# list1 = ["a","b","c"]
-# dict = {}
+list = ["A","B","C"]
+list1 = ["a","b","c"]
+dict = {}
 # for i in range(len(list)):
 #      dict[list[i]] = list1[i]
 # print(dict)
@@ -116,13 +117,21 @@ c["e"] = 55
 # print(dict)
 
 
+
+
+
 #集合推导式
 jihr = set()
 list = [4,5,6]
-for i in list:
-    a = i**2
-    jihr.add(a)
-print(jihr)
+# for i in list:
+#     a = i**2
+#     jihr.add(a)
+# print(jihr)
+#
+# jihe = {i**2 for i in list}
+# print(jihe)
 
-jihe = {i**2 for i in list}
-print(jihe)
+ji = {i+1 for i in list}
+print(ji)
+
+

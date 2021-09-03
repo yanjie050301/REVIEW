@@ -102,6 +102,13 @@
 # fun1(**dict1)              #取字典每个键值对传给函数，要加**
 # # fun1(dict1)              #不加**，会报错
 
+def fun(**kwargs):
+    print(kwargs)
+
+# fun(a = "1",b = "2")
+# di ={'a': '1', 'b': '2'}
+# fun(**di)
+
 
 
 #可变类型和不可变类型
@@ -190,6 +197,7 @@ import os
 # b = os.getcwd()
 # print(b)
 #查看路径下的所有文件
-list1 = os.listdir()
-print(list1)
-
+# list1 = os.listdir()
+# print(list1)
+path = os.path.dirname(__file__)
+print(path)
