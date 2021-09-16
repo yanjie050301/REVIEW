@@ -119,6 +119,7 @@ if __name__ == '__main__':
     a.year1()
 
 """
+"""
 y = 2000
 m = 12
 d = 31
@@ -143,7 +144,7 @@ if __name__ == '__main__':
     Year()
 
 
-
+"""
 
 
 
@@ -244,11 +245,17 @@ T()
 
 
 
+l = [0,1,1,2,3,5,8,11,19]
 
-
-
-
-
+long = 10
+ll = []
+if len(ll)<=2:
+    ll.append(0)
+    ll.append(1)
+for n in range(0,long-2):
+    a = ll[n] + ll[n+1]
+    ll.append(a)
+print(ll)
 
 
 
