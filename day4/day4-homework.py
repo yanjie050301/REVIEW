@@ -122,11 +122,21 @@ ruien = Shibing("ruien","AK47")
 ruien.kaihuo()
 ruien.zhuagzidan()
 """
-"""
-class Shibing():
-    def __init__(self,ren_name):
+class Qiang():
+    def __init__(self,qiang_name,num):
+        # 枪的名字
+        self.qiang_name = qiang_name
+        # 枪的子弹
+        self.zongzidan = num
+        # 枪剩余子弹
+        self.shengzidan = num
+class Shibing(Qiang):
+    def __init__(self,ren_name,qiang_name,num):
         #士兵的名字
         self.ren_name = ren_name
+        self.qiang_name = qiang_name
+        self.shengzidan = num
+        self.zongzidan = num
     def kaihuo(self):
         #士兵开一枪，子弹-1
         self.shengzidan = self.shengzidan - 1
@@ -136,19 +146,9 @@ class Shibing():
         # 士兵装子弹，子弹+1
         self.shengzidan = self.shengzidan + 1
         print(f"装一下子弹，子弹剩余{self.shengzidan}")
-
-class Qiang():
-    def __init__(self,qiang_name,num):
-        # 枪的名字
-        self.qiang_name = qiang_name
-        # 枪的子弹
-        self.zongzidan = num
-        # 枪剩余子弹
-        self.shengzidan = num
-ruien = Shibing("ruien","AK47")
+ruien = Shibing(ren_name="ruien",qiang_name="AK47",num=10)
 ruien.kaihuo()
 ruien.zhuagzidan()
-"""
 
 # 有这样一个文件，文件内容如下：
 # Lucy|18601914231|男|19890218
@@ -234,7 +234,7 @@ new_f.close()
 # C1.doc
 # D1.excel
 # 任务1-将该目录下的文件按照后缀进行分类，然后分别新建且放入不同的文件夹内，比如txt文件放入txt目录下等
-
+"""
 import os,shutil
 """
 # os.mkdir("file")
@@ -270,7 +270,7 @@ for b in dir_tupe:
             shutil.move(new_path + "\\" +c,new_path+"\\"+b)        #一致的话，将文件移动到该文件夹下面
 # 移动文件进入不同的文件  shutil.move()
 
-
+"""
 
 
 

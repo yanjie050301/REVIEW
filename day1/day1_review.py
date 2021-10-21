@@ -7,12 +7,12 @@ a = ["1","2","3"]
 # print(review1.count("c"))
 # print(review1.count("c",0,2))
 # 3.替换字符串这种的某字符，结合替换次数
-# print(review1.replace("a","l",2))
+# print(review1.replace("a","l",1))
 # 4.分割字符串，结合分割次数
 # print(review1.split("a"))
 # 5.用一个字符或子串合并字符串
-# print("_".join(review1))
-# print("aa0".join(a))
+print("_".join(review1))
+print("aa0".join(a))
 # 6.某字符串第一个字母转化为大写
 # print(review1.capitalize())
 # 7.将字符串每个单词首字母转换成大写
@@ -43,10 +43,10 @@ review4 = "sfhksh465jfd"
 review5 = "    "
 b = "55"
 # 18.判断字符串review4是否是纯字母
-print(review4.isalpha())
+# print(review4.isalpha())
 # 19判断字符串review3是否是纯数字
-print(review3.isdigit())
+# print(review3.isdigit())
 # 20.判断字符串review4是否是数字和字母组成
-print(review4.isalnum())
+# print(review4.isalnum())
 # 21.判断字符串review3是否是只包含空格
-print(review5.isspace())
+# print(review5.isspace())
