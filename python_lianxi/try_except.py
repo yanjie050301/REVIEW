@@ -8,3 +8,4 @@ except ValueError as e:
     print(f"具体异常：{e}")
 except Exception as e:
     print(f"异常：{e}")
+print("策四")
