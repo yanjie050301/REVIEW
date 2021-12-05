@@ -87,6 +87,7 @@ while n<w+1:
         l = l+1
     print()
     n = n+1
+print("eeee")
 #8. 打印星号(倒三角)
 '''
 n = 4
