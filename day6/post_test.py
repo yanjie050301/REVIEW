@@ -1,6 +1,6 @@
 import requests
 import json
-
+"""
 url = "http://api.lemonban.com/futureloan/member/login"
 url1 = "http://api.lemonban.com/futureloan/member/register"
 data = {
@@ -17,7 +17,7 @@ data = json.dumps(data)
 r = requests.post(url=url,data=data,headers = header)
 print(r.json())
 
-
+"""
 
 
 

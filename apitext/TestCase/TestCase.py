@@ -105,7 +105,7 @@ if __name__ == '__main__':
 *************************************************优化的代码***********请求接口的结果，将接口状态和errorcode码写入excel中
 """
 import unittest
-import pytest
+import py_test
 from common.readexcel import ReadExcel
 from common.HttpConfig import Httpconfig
 from ddt import ddt,data,unpack

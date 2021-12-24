@@ -4,8 +4,9 @@
 try:
     a = int(input("请输入内容："))
     # print(bdb)
-except ValueError as e:
-    print(f"具体异常：{e}")
+# except ValueError as e:
+#     print(f"具体异常：{e}")
 except Exception as e:
-    print(f"异常：{e}")
-print("策cdc四")
+
+    raise ValueError("a 必须是数字")
+    print("2222222")
